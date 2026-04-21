@@ -41,14 +41,14 @@ import {
 import { VscCode } from 'react-icons/vsc'
 
 export const NAV_ITEMS = [
-  { id: 'home', label: 'Home', Icon: FaHome },
-  { id: 'about', label: 'About', Icon: FaUser },
+  { id: 'home', label: 'home', Icon: FaHome },
+  { id: 'about', label: 'about', Icon: FaUser },
   { id: 'education', label: 'Education', Icon: FaGraduationCap },
-  { id: 'skills', label: 'Skills', Icon: FaCode },
-  { id: 'projects', label: 'Projects', Icon: FaProjectDiagram },
-  { id: 'coding', label: 'Coding', Icon: FaTerminal },
-  { id: 'certifications', label: 'Certifications', Icon: FaCertificate },
-  { id: 'contact', label: 'Contact', Icon: FaEnvelope },
+  { id: 'skills', label: 'skills', Icon: FaCode },
+  { id: 'projects', label: 'Project', Icon: FaProjectDiagram },
+  { id: 'coding', label: 'coding profile', Icon: FaTerminal },
+  { id: 'certifications', label: 'certifications', Icon: FaCertificate },
+  { id: 'contact', label: 'get in touch', Icon: FaEnvelope },
 ]
 
 export const HERO_TAGLINES = [

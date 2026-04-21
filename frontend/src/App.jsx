@@ -35,12 +35,12 @@ function Cursor() {
       <motion.div
         className="pointer-events-none fixed left-0 top-0 z-[60] hidden h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-brand-500 mix-blend-multiply md:block"
         animate={{ x: pos.x, y: pos.y }}
-        transition={{ type: 'spring', stiffness: 200, damping: 18 }}
+        transition={{ type: 'spring', stiffness: 1000, damping: 35 }}
       />
       <motion.div
         className="pointer-events-none fixed left-0 top-0 z-[60] hidden h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-pink md:block"
         animate={{ x: pos.x, y: pos.y }}
-        transition={{ type: 'spring', stiffness: 500, damping: 25 }}
+        transition={{ type: 'spring', stiffness: 1500, damping: 40 }}
       />
     </>
   )
