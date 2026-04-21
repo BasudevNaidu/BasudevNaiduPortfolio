@@ -1,0 +1,121 @@
+section 1
+Hi, I am Naidu Basudev
+Aspiring Software Engineer | Full Stack Developer | Open Source contributor| Turning ideas to code | Code. Break. Optimize. Repeat.
+
+here in this one i want the animations in left side my pic will be there take the pic from the link i provided to you (https://ik.imagekit.io/b2asu00dev6/PortfolioImg/mypic.png?updatedAt=1776769484899)(my image should be animated also)and on the right the data which is in above and i want animations here like Hii, I am Naidu Basudev will be fixed and rest all will be in down and in animated form it will form one by one like first one will appear then disappear after that next one like that do it 
+
+This will be the first section here also create two buttons get in touch and view project
+
+next section 2
+
+About me,
+Hi, I'm Basudev a Computer Science undergraduate with strong proficiency in Java and a solid understanding of Data Structures,
+Algorithms, and Object-Oriented Programming. My problem-solving skills have been honed through competitive
+programming. I have hands-on experience with Node.js, Express.js, and Docker, along with Git and GitHub, and databases
+such as SQL and MongoDB. I have practical knowledge of building and deploying full-stack applications with scalable backend
+architecture and containerized environments.
+
+here left side my pic will there and the link is (https://ik.imagekit.io/b2asu00dev6/PortfolioImg/mypic2.jpeg?updatedAt=1776779217075) this image should be animated
+
+here one resume button will be there which will take u to my resume 
+
+https://ik.imagekit.io/b2asu00dev6/PortfolioImg/freshone.pdf
+
+
+section 3
+Education 
+Bachelor of Technology (B.Tech) in Computer Science and Engineering
+K L E F Deemed To Be University | 2023 - 2027 | Vijayawada, Andhra Pradesh, India | GPA: 9.07/10
+(https://ik.imagekit.io/b2asu00dev6/PortfolioImg/kl-university-guntur-india.webp?updatedAt=1776779337331
+)
+Senior Secondary (Class 12) - MPCB
+St. Xavier High School | CBSE| 2021 - 2023
+Berhampur, Odisha, India| GPA: 8.1/10
+(St-Xaviers-High-School-Ambapua-Berhampur-Logo.webp)
+
+
+Secondary (Class 10)
+Sunabeda Public School | ICSE | 2020 - 2021 | Sunabeda, Odisha, India | GPA: 9.16/10
+(https://ik.imagekit.io/b2asu00dev6/PortfolioImg/sunabeda-public-school.png)
+
+
+The images should be used as logo
+Section 4
+Skills and Technologies
+1) Programming Language - C, JAVA, JAVASCRIPT, PYTHON
+
+2) Framework & Platform  - React.js, Node.js , Express.js
+
+3) Databases - Mongodb, sql, MySQL, PostgreSQL
+
+4) Version Control & Devops -Git, GitHub, Gitlab, Docker, Jenekins, Kubernets
+
+5) Developer Tools - VS Code, Eclipse, PyCharm, Postman, MySQL Workbench
+
+
+6) Testing Tools - Selenium , JUnit
+
+7) Data Structures & Algorithms(DSA) - Proficient DSA
+
+here each section will be designed in card and inside each card each technology should be like button with its name
+
+
+Section 5
+Projects 
+
+Basudevbnb, Eventhub, Cyberscan,Spendwise--Expense-Tracker, Fitrack, Hostel Management, VasuFlicks-- OTT Platform
+
+i will add the image later for now u keep it # and after it i will do all the thing for this section
+
+
+Section 6
+
+Coding Profiles
+
+1) Codechef  (@basudev06coder) -(https://www.codechef.com/users/basudev06coder)
+
+2) Leetcode  (@klu2300032191) - (https://leetcode.com/klu2300032191/)
+both should have buttons of view profile and when we click it, it will direct to the profiles
+
+Section 7
+Certifications
+Here heading are there which is its name and then view certificate button should be there for each certificate and i gave the links 
+
+1)MongoDB Certified Associate Developer ->https://ik.imagekit.io/b2asu00dev6/PortfolioImg/certificates/mongodb.png?updatedAt=1776780883735
+
+2)Linguaskill General - English Language Proficiency -->https://ik.imagekit.io/b2asu00dev6/PortfolioImg/certificates/linguaskill.png?updatedAt=1776780884739
+
+3) Salesforce Certified AI Associate --> https://ik.imagekit.io/b2asu00dev6/PortfolioImg/certificates/Salesforce-ai-associate.png?updatedAt=1776780883962
+
+4)Aviatrix MultiCloud Network Associate --> https://ik.imagekit.io/b2asu00dev6/PortfolioImg/certificates/aviatrix.png?updatedAt=1776780882627
+
+5)Dynamic Programming, Greedy Algorithms
+(University of Colorado Boulder) -> https://ik.imagekit.io/b2asu00dev6/PortfolioImg/certificates/DP%20&%20Greedy%20Algo.png?updatedAt=1776780885021
+
+
+
+Here all the links are attached so u need to take image from this and when a user click the view certificate then in the same page above it one designer frame will come where the certificates will be displayed
+
+Each certificate will be in card format
+
+
+Section 8
+Get in Touch
+
+here direct contact
+
+linkedin --> (@naidu-basudev) https://www.linkedin.com/in/naidu-basudev-96b7a6289/
+
+Instagram -->(@basudev7788) https://www.instagram.com/basudev1728/
+
+Telegram --> @BasudevNaidu
+
+email --> basudevnaidu2@gmail.com
+
+here also each one in the form of cards and it and in linkeedin and Instagram when then click they will direct to the profile
+
+
+
+
+
+
