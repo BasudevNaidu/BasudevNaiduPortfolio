@@ -166,13 +166,13 @@ export const SKILLS = [
 // Drop a video file into `frontend/public/projects/` and set `video` to its path
 // (e.g. video: '/projects/basudevbnb.mp4'). Until then, an animated placeholder is shown.
 export const PROJECTS = [
-  { name: 'Basudevbnb', tag: 'Stay Booking Platform', video: '/projects/basudevbnb.mp4' },
-  { name: 'Eventhub', tag: 'Event Management', video: '/projects/eventhub.mp4' },
-  { name: 'Cyberscan', tag: 'Security Toolkit', video: '/projects/cyberscan.mp4' },
-  { name: 'Spendwise - Expense Tracker', tag: 'Personal Finance', video: '/projects/spendwise.mp4' },
-  { name: 'Fitrack', tag: 'Fitness Tracker', video: '/projects/fitrack.mp4' },
-  { name: 'Hostel Management', tag: 'College Utility', video: '/projects/hostel-management.mp4' },
-  { name: 'VasuFlicks - OTT Platform', tag: 'Streaming App', video: '/projects/vasuflicks.mp4' },
+  { name: 'Basudevbnb', tag: 'Stay Booking Platform', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/basudevbnb.mp4' },
+  { name: 'Eventhub', tag: 'Event Management', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/eventhub.mp4?updatedAt=1776876084187' },
+  { name: 'Cyberscan', tag: 'Security Toolkit', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/cyberscan.mp4' },
+  { name: 'Spendwise - Expense Tracker', tag: 'Personal Finance', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/spendwise.mp4?updatedAt=1776875829324' },
+  { name: 'Fitrack', tag: 'Fitness Tracker', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/fitrack.mp4?updatedAt=1776875767565' },
+  { name: 'Hostel Management', tag: 'College Utility', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/hostel-management.mp4?updatedAt=1776876078841' },
+  { name: 'VasuFlicks - OTT Platform', tag: 'Streaming App', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/vasuflicks.mp4?updatedAt=1776875955907' },
 ]
 
 export const CODING_PROFILES = [
