@@ -166,13 +166,13 @@ export const SKILLS = [
 // Drop a video file into `frontend/public/projects/` and set `video` to its path
 // (e.g. video: '/projects/basudevbnb.mp4'). Until then, an animated placeholder is shown.
 export const PROJECTS = [
-  { name: 'Basudevbnb', tag: 'Stay Booking Platform', video: null },
-  { name: 'Eventhub', tag: 'Event Management', video: null },
-  { name: 'Cyberscan', tag: 'Security Toolkit', video: null },
-  { name: 'Spendwise — Expense Tracker', tag: 'Personal Finance', video: null },
-  { name: 'Fitrack', tag: 'Fitness Tracker', video: null },
-  { name: 'Hostel Management', tag: 'College Utility', video: null },
-  { name: 'VasuFlicks — OTT Platform', tag: 'Streaming App', video: null },
+  { name: 'Basudevbnb', tag: 'Stay Booking Platform', video: '/projects/basudevbnb.mp4' },
+  { name: 'Eventhub', tag: 'Event Management', video: '/projects/eventhub.mp4' },
+  { name: 'Cyberscan', tag: 'Security Toolkit', video: '/projects/cyberscan.mp4' },
+  { name: 'Spendwise - Expense Tracker', tag: 'Personal Finance', video: '/projects/spendwise.mp4' },
+  { name: 'Fitrack', tag: 'Fitness Tracker', video: '/projects/fitrack.mp4' },
+  { name: 'Hostel Management', tag: 'College Utility', video: '/projects/hostel-management.mp4' },
+  { name: 'VasuFlicks - OTT Platform', tag: 'Streaming App', video: '/projects/vasuflicks.mp4' },
 ]
 
 export const CODING_PROFILES = [
