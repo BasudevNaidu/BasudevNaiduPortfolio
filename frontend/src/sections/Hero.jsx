@@ -126,8 +126,8 @@ export default function Hero() {
             transition={{ delay: 0.6 }}
             className="mt-6 max-w-lg text-base leading-relaxed text-brand-700/80"
           >
-            I build polished full-stack applications with thoughtful UX, clean
-            architecture, and a love for solving hard problems.
+           I build to understand—turning concepts into real systems 
+           through consistent practice and problem-solving
           </motion.p>
 
           <motion.div
