@@ -166,13 +166,13 @@ export const SKILLS = [
 // Drop a video file into `frontend/public/projects/` and set `video` to its path
 // (e.g. video: '/projects/basudevbnb.mp4'). Until then, an animated placeholder is shown.
 export const PROJECTS = [
-  { name: 'Basudevbnb', tag: 'Stay Booking Platform', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/basudevbnb.mp4' },
-  { name: 'Eventhub', tag: 'Event Management', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/eventhub.mp4?updatedAt=1776876084187' },
-  { name: 'Cyberscan', tag: 'Security Toolkit', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/cyberscan.mp4' },
-  { name: 'Spendwise - Expense Tracker', tag: 'Personal Finance', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/spendwise.mp4?updatedAt=1776875829324' },
-  { name: 'Fitrack', tag: 'Fitness Tracker', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/fitrack.mp4?updatedAt=1776875767565' },
-  { name: 'Hostel Management', tag: 'College Utility', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/hostel-management.mp4?updatedAt=1776876078841' },
-  { name: 'VasuFlicks - OTT Platform', tag: 'Streaming App', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/vasuflicks.mp4?updatedAt=1776875955907' },
+  { name: 'Basudevbnb', tag: 'Stay Booking Platform', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/basudevbnb.mp4', github: 'https://github.com/BasudevNaidu/Basudevbnb', live: 'https://basudevbnb-3nzp.vercel.app/' },
+  { name: 'Eventhub', tag: 'Event Management', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/eventhub.mp4?updatedAt=1776876084187', github: 'https://github.com/BasudevNaidu/EventHub', live: 'https://eventhubofbasudev.netlify.app/' },
+  { name: 'Cyberscan', tag: 'Security Toolkit', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/cyberscan.mp4', github: 'https://github.com/BasudevNaidu/CyberScan', live: null },
+  { name: 'Spendwise - Expense Tracker', tag: 'Personal Finance', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/spendwise.mp4?updatedAt=1776875829324', github: 'https://github.com/BasudevNaidu/SpendWise---Expense-Tracker', live: 'https://spend-wise-expense-tracker-46u4.vercel.app/' },
+  { name: 'Fitrack', tag: 'Fitness Tracker', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/fitrack.mp4?updatedAt=1776875767565', github: 'https://github.com/BasudevNaidu/Fitrack', live: 'https://fitrack-flame.vercel.app/' },
+  { name: 'Hostel Management', tag: 'College Utility', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/hostel-management.mp4?updatedAt=1776876078841', github: 'https://github.com/BasudevNaidu/Hostel-Management', live: 'https://hostel-management-jade-two.vercel.app/homePage/' },
+  { name: 'VasuFlicks - OTT Platform', tag: 'Streaming App', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/vasuflicks.mp4?updatedAt=1776875955907', github: 'https://github.com/BasudevNaidu/VasFlicks---OTT-Platform', live: 'https://vas-flicks-ott-platform.vercel.app/' },
 ]
 
 export const CODING_PROFILES = [

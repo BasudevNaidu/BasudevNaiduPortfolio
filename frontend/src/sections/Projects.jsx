@@ -258,22 +258,38 @@ export default function Projects() {
                     </h3>
 
                     <div className="mt-4 flex items-center gap-2 px-1">
-                      <motion.button
-                        type="button"
+                      <motion.a
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.06 }}
                         whileTap={{ scale: 0.96 }}
                         className="inline-flex items-center gap-2 rounded-full bg-brand-900 px-4 py-2 text-xs font-semibold text-white transition hover:bg-brand-700"
                       >
                         <FaGithub /> Code
-                      </motion.button>
-                      <motion.button
-                        type="button"
-                        whileHover={{ scale: 1.06 }}
-                        whileTap={{ scale: 0.96 }}
-                        className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-xs font-semibold text-brand-700 transition hover:border-accent-pink hover:text-accent-pink"
-                      >
-                        <FaExternalLinkAlt /> Live
-                      </motion.button>
+                      </motion.a>
+                      {p.live ? (
+                        <motion.a
+                          href={p.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.06 }}
+                          whileTap={{ scale: 0.96 }}
+                          className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-xs font-semibold text-brand-700 transition hover:border-accent-pink hover:text-accent-pink"
+                        >
+                          <FaExternalLinkAlt /> Live
+                        </motion.a>
+                      ) : (
+                        <motion.button
+                          type="button"
+                          whileHover={{ scale: 1.06 }}
+                          whileTap={{ scale: 0.96 }}
+                          className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-xs font-semibold text-brand-700/50 transition cursor-not-allowed"
+                          disabled
+                        >
+                          <FaExternalLinkAlt /> Coming Soon
+                        </motion.button>
+                      )}
                     </div>
                   </div>
 
