@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fa'
 import { CONTACTS } from '../data'
 import { SectionTitle } from './About'
+import emailjs from '@emailjs/browser'
 
 const ICONS = {
   LinkedIn: FaLinkedin,
@@ -26,25 +27,52 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('')
+  const [emailError, setEmailError] = useState('')
+
+  const validateGmail = (email) => {
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i
+    return gmailRegex.test(email)
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
+    
+    // Clear email error when user starts typing
+    if (name === 'email') {
+      setEmailError('')
+    }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('')
+    setEmailError('')
+
+    // Validate Gmail address
+    if (!validateGmail(formData.email)) {
+      setEmailError('Please enter a valid Gmail address (e.g., user@gmail.com)')
+      setIsSubmitting(false)
+      return
+    }
 
     try {
-      // Create mailto link
-      const subject = encodeURIComponent(`Message from ${formData.name}`)
-      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)
-      const mailtoLink = `mailto:basudevnaidu@example.com?subject=${subject}&body=${body}`
-      
-      // Open email client
-      window.location.href = mailtoLink
+      // Initialize EmailJS (you'll need to set this up)
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'basudevnaidu2@gmail.com'
+      }
+
+      // Send email using EmailJS
+      await emailjs.send(
+        'service_ow01fsr', // Your EmailJS service ID
+        'template_4hg34pg', // Your EmailJS template ID
+        templateParams,
+        'WX5kjfvooAFMo2YWH' // Your EmailJS public key
+      )
       
       setSubmitStatus('success')
       setTimeout(() => {
@@ -52,6 +80,7 @@ export default function Contact() {
         setFormData({ name: '', email: '', message: '' })
       }, 2000)
     } catch (error) {
+      console.error('EmailJS error:', error)
       setSubmitStatus('error')
       setTimeout(() => setSubmitStatus(''), 3000)
     } finally {
@@ -112,9 +141,23 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-brand-200 bg-white/90 backdrop-blur-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
-                  placeholder="john@example.com"
+                  className={`w-full px-4 py-3 rounded-xl border bg-white/90 backdrop-blur-sm focus:ring-2 transition-all ${
+                    emailError 
+                      ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' 
+                      : 'border-brand-200 focus:border-brand-500 focus:ring-brand-500/20'
+                  }`}
+                  placeholder="yourname@gmail.com"
                 />
+                {emailError && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-600 flex items-center gap-1"
+                  >
+                    <span className="text-red-500">⚠️</span>
+                    {emailError}
+                  </motion.p>
+                )}
               </div>
             </div>
 
