@@ -125,7 +125,7 @@ export default function Contact() {
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 rounded-xl border border-brand-200 bg-white/90 backdrop-blur-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
-                  placeholder="John Doe"
+                  placeholder="Insert your name"
                 />
               </div>
 
@@ -146,7 +146,7 @@ export default function Contact() {
                       ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' 
                       : 'border-brand-200 focus:border-brand-500 focus:ring-brand-500/20'
                   }`}
-                  placeholder="yourname@gmail.com"
+                  placeholder="Insert your email"
                 />
                 {emailError && (
                   <motion.p
@@ -174,7 +174,7 @@ export default function Contact() {
                 required
                 rows={5}
                 className="w-full px-4 py-3 rounded-xl border border-brand-200 bg-white/90 backdrop-blur-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all resize-none"
-                placeholder="Tell me about your project idea..."
+                placeholder="Write your message"
               />
             </div>
 
