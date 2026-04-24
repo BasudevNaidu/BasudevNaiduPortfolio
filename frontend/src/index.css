@@ -2,17 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light theme variables */
 :root {
   color-scheme: light;
+  
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #334155;
+  --text-tertiary: #64748b;
+  --accent-brand: #3b82f6;
+  --accent-pink: #ec4899;
+  --accent-peach: #f97316;
+  --accent-purple: #8b5cf6;
+  --accent-green: #10b981;
+  --border-primary: rgba(59, 130, 246, 0.2);
+  --border-secondary: rgba(236, 72, 153, 0.2);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  color-scheme: dark;
+  
+  --bg-primary: #000000;
+  --bg-secondary: #0f0f23;
+  --bg-tertiary: #1a1a2e;
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-tertiary: #94a3b8;
+  --accent-brand: #a855f7;
+  --accent-pink: #ec4899;
+  --accent-peach: #f97316;
+  --border-primary: rgba(168, 85, 247, 0.3);
+  --border-secondary: rgba(236, 72, 153, 0.4);
+  --glass-bg: rgba(15, 15, 35, 0.7);
+  --glass-border: rgba(168, 85, 247, 0.4);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 40px rgba(168, 85, 247, 0.5);
 }
 
 html,
 body {
-  background: #f5f7ff;
-  color: #1c206b;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+}
+
+/* Colorful light theme background */
+:root body {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(249, 115, 22, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 60% 60%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
+    linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
 }
 
 body {
@@ -20,8 +74,279 @@ body {
 }
 
 ::selection {
-  background: #cdd5ff;
-  color: #1c206b;
+  background: var(--accent-brand);
+  color: var(--bg-primary);
+}
+
+/* Theme transition animations */
+.theme-transition,
+.theme-transition * {
+  transition: 
+    background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Dark mode background - stable and clean */
+[data-theme="dark"] {
+  background: #000000;
+}
+
+/* Simple glow effects */
+[data-theme="dark"] .shadow-glow {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+/* Colorful glass effects for light theme */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    0 8px 32px rgba(59, 130, 246, 0.1),
+    inset 0 0 20px rgba(236, 72, 153, 0.05);
+  color: #1e293b !important;
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 
+    0 12px 40px rgba(59, 130, 246, 0.15),
+    inset 0 0 30px rgba(236, 72, 153, 0.08);
+  color: #1e293b !important;
+}
+
+
+
+
+
+
+
+
+
+/* Dark mode glass effects */
+[data-theme="dark"] .glass {
+  background: rgba(15, 15, 35, 0.7);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+[data-theme="dark"] .glass-strong {
+  background: rgba(15, 15, 35, 0.85);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+/* PROPER DARK MODE IMPLEMENTATION */
+[data-theme="dark"] {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] body {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+}
+
+/* Dark mode text with proper hierarchy */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] label {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .text-brand-900,
+[data-theme="dark"] .text-brand-800 {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .text-brand-700,
+[data-theme="dark"] .text-brand-600 {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .text-brand-500,
+[data-theme="dark"] .text-brand-400 {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .text-brand-300 {
+  color: #93c5fd;
+}
+
+[data-theme="dark"] a {
+  color: #60a5fa !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.5) !important;
+}
+
+[data-theme="dark"] a:hover {
+  color: #93c5fd !important;
+  text-shadow: 0 0 20px rgba(147, 197, 253, 0.7) !important;
+}
+
+[data-theme="dark"] code,
+[data-theme="dark"] pre {
+  color: #ffffff !important;
+  background: rgba(96, 165, 250, 0.2) !important;
+  border: 1px solid rgba(96, 165, 250, 0.4) !important;
+}
+
+[data-theme="dark"] blockquote {
+  color: #ffffff !important;
+  border-color: rgba(96, 165, 250, 0.4) !important;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  color: #ffffff !important;
+  background-color: rgba(96, 165, 250, 0.1) !important;
+  border: 2px solid rgba(96, 165, 250, 0.4) !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #fbbf24 !important;
+  opacity: 0.8 !important;
+}
+
+[data-theme="dark"] button,
+[data-theme="dark"] .btn {
+  color: #ffffff !important;
+  background: rgba(96, 165, 250, 0.3) !important;
+  border: 2px solid rgba(96, 165, 250, 0.5) !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] th,
+[data-theme="dark"] td {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] figcaption {
+  color: #fbbf24 !important;
+  font-weight: 500 !important;
+}
+
+/* Dark mode cards with proper styling */
+[data-theme="dark"] .skill-card,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .education-card,
+[data-theme="dark"] .certification-card,
+[data-theme="dark"] .card,
+[data-theme="dark"] [class*="card"],
+[data-theme="dark"] [class*="Card"] {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .glass {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+[data-theme="dark"] .glass-strong {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(96, 165, 250, 0.4);
+}
+
+
+
+[data-theme="dark"] .skill-progress,
+[data-theme="dark"] .progress-bar {
+  background: rgba(96, 165, 250, 0.2) !important;
+  border: 1px solid rgba(96, 165, 250, 0.4) !important;
+}
+
+[data-theme="dark"] .skill-progress::-webkit-progress-value,
+[data-theme="dark"] .progress-bar::-webkit-progress-value {
+  background: linear-gradient(90deg, #60a5fa, #93c5fd) !important;
+}
+
+/* HERO AND SECTIONS - VIBRANT COLORS */
+[data-theme="dark"] .hero-title,
+[data-theme="dark"] .hero-subtitle {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.4) !important;
+}
+
+[data-theme="dark"] .hero-description {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] .sidebar,
+[data-theme="dark"] .nav-link {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #60a5fa !important;
+  text-shadow: 0 0 15px rgba(96, 165, 250, 0.6) !important;
+}
+
+[data-theme="dark"] footer,
+[data-theme="dark"] .footer-content {
+  color: #fbbf24 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] button,
+[data-theme="dark"] .btn {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] a {
+  color: #a855f7 !important;
+}
+
+[data-theme="dark"] a:hover {
+  color: #c084fc !important;
+}
+
+/* Ensure all skill cards and sections are visible */
+[data-theme="dark"] section,
+[data-theme="dark"] .skill-card,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .education-card,
+[data-theme="dark"] .certification-card {
+  background: rgba(15, 15, 35, 0.8) !important;
+  border: 1px solid rgba(168, 85, 247, 0.2) !important;
+}
+
+[data-theme="dark"] .skill-progress,
+[data-theme="dark"] .progress-bar {
+  background: rgba(168, 85, 247, 0.3) !important;
+}
+
+[data-theme="dark"] .skill-progress::-webkit-progress-value,
+[data-theme="dark"] .progress-bar::-webkit-progress-value {
+  background: linear-gradient(90deg, #a855f7, #ec4899) !important;
 }
 
 /* Custom scrollbar */
@@ -30,11 +355,21 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #eef1ff;
+  background: var(--bg-tertiary);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #5b66ff, #ff6ad5);
+  background: linear-gradient(180deg, var(--accent-brand), var(--accent-pink));
   border-radius: 8px;
+}
+
+/* Dark mode scrollbar */
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-brand), var(--accent-pink));
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
 @layer utilities {

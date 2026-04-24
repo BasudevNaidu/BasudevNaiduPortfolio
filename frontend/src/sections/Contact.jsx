@@ -11,6 +11,7 @@ import {
 import { CONTACTS } from '../data'
 import { SectionTitle } from './About'
 import emailjs from '@emailjs/browser'
+import { useTheme } from '../contexts/ThemeContext'
 
 const ICONS = {
   LinkedIn: FaLinkedin,
@@ -20,6 +21,7 @@ const ICONS = {
 }
 
 export default function Contact() {
+  const { theme, isDark } = useTheme()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -108,7 +110,9 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-8 rounded-3xl bg-white/70 p-8 backdrop-blur sm:p-12"
+          className={`mt-8 rounded-3xl p-8 backdrop-blur sm:p-12 shadow-glow ${
+  isDark ? 'glass-strong' : 'glass'
+}`}
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid gap-6 sm:grid-cols-2">
@@ -124,7 +128,11 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-brand-200 bg-white/90 backdrop-blur-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
+                  className={`w-full px-4 py-3 rounded-xl border backdrop-blur-sm focus:ring-2 transition-all ${
+  isDark 
+    ? 'border-purple-500/30 bg-gray-900/80 focus:border-purple-400 focus:ring-purple-400/30' 
+    : 'border-brand-200 bg-white/90 focus:border-brand-500 focus:ring-brand-500/20'
+}`}
                   placeholder="Insert your name"
                 />
               </div>
@@ -141,10 +149,12 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className={`w-full px-4 py-3 rounded-xl border bg-white/90 backdrop-blur-sm focus:ring-2 transition-all ${
+                  className={`w-full px-4 py-3 rounded-xl border backdrop-blur-sm focus:ring-2 transition-all ${
                     emailError 
-                      ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' 
-                      : 'border-brand-200 focus:border-brand-500 focus:ring-brand-500/20'
+                      ? 'border-red-400 focus:border-red-500 focus:ring-red-500/30' 
+                      : isDark 
+                        ? 'border-purple-500/30 bg-gray-900/80 focus:border-purple-400 focus:ring-purple-400/30'
+                        : 'border-brand-200 bg-white/90 focus:border-brand-500 focus:ring-brand-500/20'
                   }`}
                   placeholder="Insert your email"
                 />
@@ -173,7 +183,11 @@ export default function Contact() {
                 onChange={handleInputChange}
                 required
                 rows={5}
-                className="w-full px-4 py-3 rounded-xl border border-brand-200 bg-white/90 backdrop-blur-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all resize-none"
+                className={`w-full px-4 py-3 rounded-xl border backdrop-blur-sm focus:ring-2 transition-all resize-none ${
+  isDark 
+    ? 'border-purple-500/30 bg-gray-900/80 focus:border-purple-400 focus:ring-purple-400/30'
+    : 'border-brand-200 bg-white/90 focus:border-brand-500 focus:ring-brand-500/20'
+}`}
                 placeholder="Write your message"
               />
             </div>

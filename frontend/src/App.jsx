@@ -3,6 +3,8 @@ import { motion, useScroll, useSpring } from 'framer-motion'
 import AnimatedBackground from './components/AnimatedBackground'
 import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
+import { ThemeToggle } from './components/ThemeToggle'
+import { ThemeProvider } from './contexts/ThemeContext'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Education from './sections/Education'
@@ -48,24 +50,27 @@ function Cursor() {
 
 export default function App() {
   return (
-    <div className="relative min-h-screen font-body text-brand-900">
-      <AnimatedBackground />
-      <ProgressBar />
-      <Cursor />
-      <Sidebar />
+    <ThemeProvider>
+      <div className="relative min-h-screen font-body text-brand-900">
+        <AnimatedBackground />
+        <ProgressBar />
+        <Cursor />
+        <Sidebar />
+        <ThemeToggle />
 
-      <main>
-        <Hero />
-        <About />
-        <Education />
-        <Skills />
-        <Projects />
-        <Coding />
-        <Certifications />
-        <Contact />
-      </main>
+        <main>
+          <Hero />
+          <About />
+          <Education />
+          <Skills />
+          <Projects />
+          <Coding />
+          <Certifications />
+          <Contact />
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }
