@@ -404,6 +404,187 @@ body {
   font-weight: 500 !important;
 }
 
+/* ADDITIONAL FLOATING GEOMETRIC SHAPES */
+header::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 20% !important;
+  left: 30% !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 20px solid transparent !important;
+  border-right: 20px solid transparent !important;
+  border-bottom: 35px solid rgba(139, 92, 246, 0.1) !important;
+  animation: wavePattern 18s ease-in-out infinite !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+footer::before {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 20% !important;
+  right: 30% !important;
+  width: 50px !important;
+  height: 50px !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+  transform: rotate(45deg) !important;
+  animation: spiralMotion 25s linear infinite reverse !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+/* EXTRAORDINARY PROFILE PICTURE ANIMATIONS */
+@keyframes marvelousGlow {
+  0%, 100% { 
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.8),
+      0 0 60px rgba(139, 92, 246, 0.6),
+      0 0 90px rgba(139, 92, 246, 0.4),
+      inset 0 0 30px rgba(139, 92, 246, 0.2);
+  }
+  50% { 
+    box-shadow: 
+      0 0 40px rgba(59, 130, 246, 0.9),
+      0 0 80px rgba(59, 130, 246, 0.7),
+      0 0 120px rgba(59, 130, 246, 0.5),
+      inset 0 0 40px rgba(59, 130, 246, 0.3);
+  }
+}
+
+@keyframes cosmicRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.05); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  75% { transform: rotate(270deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes particleOrbit {
+  0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* TARGET ABOUT SECTION PROFILE PICTURE */
+#about .relative.h-\[380px\].w-\[300px\] {
+  position: relative !important;
+  animation: none !important;
+  border-radius: 2rem !important;
+  overflow: visible !important;
+}
+
+/* LIGHT AND BEAUTIFUL COSMIC BACKGROUND */
+#about .relative.h-\[380px\].w-\[300px\]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -25px !important;
+  left: -25px !important;
+  right: -25px !important;
+  bottom: -25px !important;
+  background: linear-gradient(45deg, 
+    rgba(139, 92, 246, 0.15),
+    rgba(59, 130, 246, 0.12),
+    rgba(236, 72, 153, 0.08),
+    rgba(139, 92, 246, 0.15)) !important;
+  border-radius: 2.5rem !important;
+  animation: cosmicRotate 20s ease-in-out infinite !important;
+  z-index: -1 !important;
+  filter: blur(1px) !important;
+}
+
+/* SUBTLE ORBITAL RING */
+#about .relative.h-\[380px\].w-\[300px\]::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 320px !important;
+  height: 320px !important;
+  margin: -160px 0 0 -160px !important;
+  border: 1px solid rgba(139, 92, 246, 0.25) !important;
+  border-radius: 50% !important;
+  animation: particleOrbit 15s ease-in-out infinite !important;
+  z-index: -2 !important;
+  filter: blur(0.5px) !important;
+}
+
+#about .relative.h-\[380px\].w-\[300px\]:hover {
+  animation: marvelousGlow 3s ease-in-out infinite !important;
+  transform: scale(1.05) rotate(2deg) !important;
+  box-shadow: 
+    0 0 30px rgba(139, 92, 246, 0.4),
+    0 0 60px rgba(139, 92, 246, 0.3),
+    0 0 90px rgba(139, 92, 246, 0.2),
+    inset 0 0 20px rgba(139, 92, 246, 0.3) !important;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#about .relative.h-\[380px\].w-\[300px\]:hover::before {
+  animation: cosmicRotate 8s ease-in-out infinite !important;
+  background: linear-gradient(45deg, 
+    rgba(139, 92, 246, 0.25),
+    rgba(59, 130, 246, 0.20),
+    rgba(236, 72, 153, 0.15),
+    rgba(139, 92, 246, 0.25)) !important;
+  filter: blur(0.5px) !important;
+}
+
+#about .relative.h-\[380px\].w-\[300px\]:hover::after {
+  animation: particleOrbit 10s ease-in-out infinite !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+  filter: blur(0.3px) !important;
+}
+
+/* ENHANCE THE IMAGE ITSELF */
+#about img {
+  position: relative !important;
+  z-index: 1 !important;
+  filter: brightness(1.1) contrast(1.1) !important;
+  transition: all 0.5s ease !important;
+}
+
+#about .relative.h-\[380px\].w-\[300px\]:hover img {
+  filter: brightness(1.2) contrast(1.2) saturate(1.2) !important;
+  transform: scale(1.05) !important;
+}
+
+/* ADD FLOATING PARTICLES AROUND THE PICTURE */
+#about .relative.mx-auto::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 20% !important;
+  left: 10% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(139, 92, 246, 0.8) !important;
+  border-radius: 50% !important;
+  animation: 
+    particleOrbit 6s linear infinite,
+    marvelousGlow 2s ease-in-out infinite !important;
+  z-index: 0 !important;
+}
+
+#about .relative.mx-auto::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 70% !important;
+  right: 10% !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(59, 130, 246, 0.8) !important;
+  border-radius: 50% !important;
+  animation: 
+    particleOrbit 8s linear infinite reverse,
+    marvelousGlow 3s ease-in-out infinite !important;
+  z-index: 0 !important;
+}
+
+
 /* Dark mode cards with proper styling */
 [data-theme="dark"] .skill-card,
 [data-theme="dark"] .project-card,
@@ -438,6 +619,841 @@ body {
 [data-theme="dark"] .skill-progress::-webkit-progress-value,
 [data-theme="dark"] .progress-bar::-webkit-progress-value {
   background: linear-gradient(90deg, #60a5fa, #93c5fd) !important;
+}
+
+/* MANY HERO SECTION IMAGE BACKGROUND ANIMATIONS */
+@keyframes heroBackgroundRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1); }
+  75% { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes heroPulseWave {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.3); opacity: 0.1; }
+}
+
+@keyframes heroGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes heroOrbitalMotion {
+  0% { transform: rotate(0deg) translateX(180px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(180px) rotate(-360deg); }
+}
+
+@keyframes heroSpiral {
+  0% { transform: rotate(0deg) translateX(0) translateY(0); }
+  25% { transform: rotate(90deg) translateX(50px) translateY(-25px); }
+  50% { transform: rotate(180deg) translateX(0) translateY(-50px); }
+  75% { transform: rotate(270deg) translateX(-50px) translateY(-25px); }
+  100% { transform: rotate(360deg) translateX(0) translateY(0); }
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-15px) translateX(10px); }
+  50% { transform: translateY(-8px) translateX(-8px); }
+  75% { transform: translateY(-20px) translateX(5px); }
+}
+
+@keyframes heroMorph {
+  0%, 100% { border-radius: 50% 50% 50% 50%; transform: scale(1) rotate(0deg); }
+  25% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: scale(1.1) rotate(90deg); }
+  50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; transform: scale(0.9) rotate(180deg); }
+  75% { border-radius: 50% 50% 20% 80% / 80% 20% 50% 50%; transform: scale(1.05) rotate(270deg); }
+}
+
+@keyframes heroBounce {
+  0%, 100% { transform: translateY(0px) scaleY(1); }
+  10% { transform: translateY(0px) scaleY(1.1) scaleX(0.9); }
+  30% { transform: translateY(-20px) scaleY(0.9) scaleX(1.1); }
+  50% { transform: translateY(0px) scaleY(1.05) scaleX(0.95); }
+  70% { transform: translateY(-10px) scaleY(0.95) scaleX(1.05); }
+  90% { transform: translateY(0px) scaleY(1.02) scaleX(0.98); }
+}
+
+@keyframes heroZigzag {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(15px, -25px); }
+  40% { transform: translate(-10px, -50px); }
+  60% { transform: translate(20px, -75px); }
+  80% { transform: translate(-5px, -100px); }
+  100% { transform: translate(0, -125px); }
+}
+
+@keyframes heroSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(720deg); }
+}
+
+@keyframes heroPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+@keyframes heroWave {
+  0% { transform: translateX(0) translateY(0) rotateZ(0deg); }
+  25% { transform: translateX(20px) translateY(-10px) rotateZ(5deg); }
+  50% { transform: translateX(-15px) translateY(5px) rotateZ(-5deg); }
+  75% { transform: translateX(25px) translateY(-15px) rotateZ(3deg); }
+  100% { transform: translateX(0) translateY(0) rotateZ(0deg); }
+}
+
+@keyframes heroOrbit {
+  0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+@keyframes heroFlicker {
+  0%, 100% { opacity: 1; }
+  25% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+  75% { opacity: 0.4; }
+}
+
+#home .relative.z-10.h-\[320px\].w-\[320px\] {
+  animation: none !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+#home .relative.z-10.h-\[320px\].w-\[320px\]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -30px !important;
+  left: -30px !important;
+  right: -30px !important;
+  bottom: -30px !important;
+  background: linear-gradient(45deg, 
+    rgba(139, 92, 246, 0.1),
+    rgba(59, 130, 246, 0.1),
+    rgba(236, 72, 153, 0.1),
+    rgba(34, 197, 94, 0.1),
+    rgba(139, 92, 246, 0.1)) !important;
+  background-size: 400% 400% !important;
+  border-radius: 50% !important;
+  animation: 
+    heroBackgroundRotate 15s linear infinite,
+    heroGradientShift 8s ease infinite !important;
+  z-index: -1 !important;
+  filter: blur(2px) !important;
+}
+
+#home .relative.z-10.h-\[320px\].w-\[320px\]::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 380px !important;
+  height: 380px !important;
+  margin: -190px 0 0 -190px !important;
+  border: 3px solid rgba(139, 92, 246, 0.2) !important;
+  border-radius: 50% !important;
+  animation: heroPulseWave 4s ease-in-out infinite !important;
+  z-index: -2 !important;
+  box-shadow: 
+    0 0 30px rgba(139, 92, 246, 0.2),
+    inset 0 0 20px rgba(139, 92, 246, 0.1) !important;
+}
+
+
+#home .relative.z-10.h-\[320px\].w-\[320px\]:hover {
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#home .relative.z-10.h-\[320px\].w-\[320px\]:hover::before {
+  animation: 
+    heroBackgroundRotate 8s linear infinite,
+    heroGradientShift 4s ease infinite !important;
+  background: linear-gradient(45deg, 
+    rgba(139, 92, 246, 0.2),
+    rgba(59, 130, 246, 0.2),
+    rgba(236, 72, 153, 0.2),
+    rgba(34, 197, 94, 0.2),
+    rgba(139, 92, 246, 0.2)) !important;
+  filter: blur(1px) !important;
+}
+
+#home .relative.z-10.h-\[320px\].w-\[320px\]:hover::after {
+  animation: heroPulseWave 2s ease-in-out infinite !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 
+    0 0 50px rgba(139, 92, 246, 0.4),
+    inset 0 0 30px rgba(139, 92, 246, 0.2) !important;
+}
+
+/* VISIBLE ORBITAL PARTICLES - 8 TO 12 PARTICLES */
+#home .relative.mx-auto::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 15% !important;
+  left: 5% !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(139, 92, 246, 0.6) !important;
+  border-radius: 50% !important;
+  animation: heroOrbitalMotion 12s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4) !important;
+}
+
+#home .relative.mx-auto::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 75% !important;
+  right: 5% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(59, 130, 246, 0.6) !important;
+  border-radius: 50% !important;
+  animation: heroOrbitalMotion 15s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* ADDITIONAL VISIBLE ORBITAL PARTICLES */
+#home .motion-div:nth-child(1)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 25% !important;
+  left: 10% !important;
+  width: 4px !important;
+  height: 4px !important;
+  background: rgba(236, 72, 153, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroSpiral 8s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.3) !important;
+}
+
+#home .motion-div:nth-child(1)::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 10% !important;
+  left: 10% !important;
+  width: 5px !important;
+  height: 5px !important;
+  background: rgba(34, 197, 94, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroFloat 6s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.3) !important;
+}
+
+#home .motion-div:nth-child(2)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 5% !important;
+  left: 50% !important;
+  width: 3px !important;
+  height: 3px !important;
+  background: rgba(255, 107, 53, 0.6) !important;
+  border-radius: 50% !important;
+  animation: heroBounce 3s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.4) !important;
+}
+
+#home .motion-div:nth-child(2)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 85% !important;
+  left: 50% !important;
+  width: 7px !important;
+  height: 7px !important;
+  background: rgba(168, 85, 247, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroZigzag 10s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3) !important;
+}
+
+#home .motion-div:nth-child(3)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 25% !important;
+  left: 80% !important;
+  width: 4px !important;
+  height: 4px !important;
+  background: rgba(251, 191, 36, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroSpin 8s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.3) !important;
+}
+
+#home .motion-div:nth-child(3)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 65% !important;
+  left: 80% !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(239, 68, 68, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroPulse 4s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+#home .motion-div:nth-child(4)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 35% !important;
+  left: 15% !important;
+  width: 5px !important;
+  height: 5px !important;
+  background: rgba(34, 211, 238, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroWave 7s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 11px rgba(34, 211, 238, 0.3) !important;
+}
+
+#home .motion-div:nth-child(4)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 55% !important;
+  left: 15% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(16, 185, 129, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroOrbit 9s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.3) !important;
+}
+
+/* MANY ADDITIONAL FLOATING ELEMENTS */
+#home .motion-div::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 10% !important;
+  right: 10% !important;
+  width: 4px !important;
+  height: 4px !important;
+  background: rgba(236, 72, 153, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroSpiral 8s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.3) !important;
+}
+
+#home .motion-div::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 10% !important;
+  left: 10% !important;
+  width: 5px !important;
+  height: 5px !important;
+  background: rgba(34, 197, 94, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroFloat 6s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.3) !important;
+}
+
+/* ADD MANY MORE BACKGROUND ELEMENTS */
+#home .motion-div:nth-child(1)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 5% !important;
+  left: 50% !important;
+  width: 3px !important;
+  height: 3px !important;
+  background: rgba(255, 107, 53, 0.6) !important;
+  border-radius: 50% !important;
+  animation: heroBounce 3s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.4) !important;
+}
+
+#home .motion-div:nth-child(1)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 85% !important;
+  left: 50% !important;
+  width: 7px !important;
+  height: 7px !important;
+  background: rgba(168, 85, 247, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroZigzag 10s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3) !important;
+}
+
+#home .motion-div:nth-child(2)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 25% !important;
+  left: 80% !important;
+  width: 4px !important;
+  height: 4px !important;
+  background: rgba(251, 191, 36, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroSpin 8s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.3) !important;
+}
+
+#home .motion-div:nth-child(2)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 65% !important;
+  left: 80% !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(239, 68, 68, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroPulse 4s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+#home .motion-div:nth-child(3)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 35% !important;
+  left: 15% !important;
+  width: 5px !important;
+  height: 5px !important;
+  background: rgba(34, 211, 238, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroWave 7s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 11px rgba(34, 211, 238, 0.3) !important;
+}
+
+#home .motion-div:nth-child(3)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 55% !important;
+  left: 15% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(16, 185, 129, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroOrbit 9s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.3) !important;
+}
+
+#home .motion-div:nth-child(4)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 45% !important;
+  left: 85% !important;
+  width: 3px !important;
+  height: 3px !important;
+  background: rgba(244, 114, 182, 0.6) !important;
+  border-radius: 50% !important;
+  animation: heroFlicker 2s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 9px rgba(244, 114, 182, 0.4) !important;
+}
+
+#home .motion-div:nth-child(4)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 30% !important;
+  left: 45% !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(99, 102, 241, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroMorph 12s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 13px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* ADD MORPHING BACKGROUND SHAPES */
+#home section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 20% !important;
+  left: 25% !important;
+  width: 60px !important;
+  height: 60px !important;
+  background: linear-gradient(45deg, 
+    rgba(139, 92, 246, 0.1),
+    rgba(59, 130, 246, 0.1)) !important;
+  border-radius: 50% !important;
+  animation: heroMorph 10s ease-in-out infinite !important;
+  z-index: -1 !important;
+}
+
+#home section::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 25% !important;
+  right: 25% !important;
+  width: 50px !important;
+  height: 50px !important;
+  background: linear-gradient(135deg, 
+    rgba(236, 72, 153, 0.1),
+    rgba(34, 197, 94, 0.1)) !important;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% !important;
+  animation: heroSpin 15s linear infinite reverse !important;
+  z-index: -1 !important;
+}
+
+/* ADD MANY MORE ORBITAL PARTICLES */
+#home .motion-div:nth-child(5)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 8% !important;
+  left: 70% !important;
+  width: 4px !important;
+  height: 4px !important;
+  background: rgba(245, 158, 11, 0.6) !important;
+  border-radius: 50% !important;
+  animation: heroOrbitalMotion 18s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.4) !important;
+}
+
+#home .motion-div:nth-child(5)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 88% !important;
+  left: 70% !important;
+  width: 5px !important;
+  height: 5px !important;
+  background: rgba(236, 72, 153, 0.6) !important;
+  border-radius: 50% !important;
+  animation: heroOrbitalMotion 14s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 12px rgba(236, 72, 153, 0.4) !important;
+}
+
+#home .motion-div:nth-child(6)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 12% !important;
+  left: 25% !important;
+  width: 3px !important;
+  height: 3px !important;
+  background: rgba(34, 197, 94, 0.7) !important;
+  border-radius: 50% !important;
+  animation: heroOrbit 11s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 9px rgba(34, 197, 94, 0.5) !important;
+}
+
+#home .motion-div:nth-child(6)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 82% !important;
+  left: 25% !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(99, 102, 241, 0.6) !important;
+  border-radius: 50% !important;
+  animation: heroOrbit 13s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 14px rgba(99, 102, 241, 0.4) !important;
+}
+
+#home .motion-div:nth-child(7)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 40% !important;
+  left: 8% !important;
+  width: 4px !important;
+  height: 4px !important;
+  background: rgba(251, 146, 60, 0.6) !important;
+  border-radius: 50% !important;
+  animation: heroSpiral 16s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 11px rgba(251, 146, 60, 0.4) !important;
+}
+
+#home .motion-div:nth-child(7)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 60% !important;
+  left: 8% !important;
+  width: 5px !important;
+  height: 5px !important;
+  background: rgba(163, 230, 53, 0.6) !important;
+  border-radius: 50% !important;
+  animation: heroSpiral 19s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 13px rgba(163, 230, 53, 0.4) !important;
+}
+
+#home .motion-div:nth-child(8)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 40% !important;
+  left: 92% !important;
+  width: 3px !important;
+  height: 3px !important;
+  background: rgba(244, 63, 94, 0.7) !important;
+  border-radius: 50% !important;
+  animation: heroFloat 9s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 8px rgba(244, 63, 94, 0.5) !important;
+}
+
+#home .motion-div:nth-child(8)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 60% !important;
+  left: 92% !important;
+  width: 7px !important;
+  height: 7px !important;
+  background: rgba(147, 51, 234, 0.5) !important;
+  border-radius: 50% !important;
+  animation: heroFloat 11s ease-in-out infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 16px rgba(147, 51, 234, 0.3) !important;
+}
+
+/* ADD MANY MORE GEOMETRIC ELEMENTS */
+#home header::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 15% !important;
+  left: 35% !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 15px solid transparent !important;
+  border-right: 15px solid transparent !important;
+  border-bottom: 25px solid rgba(139, 92, 246, 0.1) !important;
+  animation: heroWave 12s ease-in-out infinite !important;
+  z-index: -1 !important;
+}
+
+#home header::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 20% !important;
+  right: 35% !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+  transform: rotate(45deg) !important;
+  animation: heroBounce 6s ease-in-out infinite !important;
+  z-index: -1 !important;
+}
+
+/* ADDITIONAL GEOMETRIC SHAPES */
+#home main::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 5% !important;
+  left: 60% !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 20px solid transparent !important;
+  border-bottom: 20px solid transparent !important;
+  border-left: 30px solid rgba(236, 72, 153, 0.1) !important;
+  animation: heroSpin 14s linear infinite !important;
+  z-index: -1 !important;
+}
+
+#home main::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 8% !important;
+  left: 60% !important;
+  width: 35px !important;
+  height: 35px !important;
+  background: rgba(34, 197, 94, 0.1) !important;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%) !important;
+  animation: heroMorph 16s ease-in-out infinite !important;
+  z-index: -1 !important;
+}
+
+#home footer::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 25% !important;
+  right: 8% !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 25px solid transparent !important;
+  border-right: 25px solid transparent !important;
+  border-top: 35px solid rgba(251, 191, 36, 0.1) !important;
+  animation: heroPulse 5s ease-in-out infinite !important;
+  z-index: -1 !important;
+}
+
+#home footer::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 70% !important;
+  right: 8% !important;
+  width: 45px !important;
+  height: 45px !important;
+  background: rgba(244, 63, 94, 0.1) !important;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important;
+  animation: heroRotate 18s linear infinite !important;
+  z-index: -1 !important;
+}
+
+/* MORE COMPLEX GEOMETRIC ELEMENTS */
+#home div[class*="grid"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 18% !important;
+  left: 42% !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 18px solid transparent !important;
+  border-bottom: 18px solid transparent !important;
+  border-right: 28px solid rgba(99, 102, 241, 0.1) !important;
+  animation: heroZigzag 20s linear infinite !important;
+  z-index: -1 !important;
+}
+
+#home div[class*="grid"]::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 22% !important;
+  left: 42% !important;
+  width: 30px !important;
+  height: 30px !important;
+  background: rgba(245, 158, 11, 0.1) !important;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%) !important;
+  animation: heroBounce 8s ease-in-out infinite !important;
+  z-index: -1 !important;
+}
+
+/* ADDITIONAL FLOATING GEOMETRIC SHAPES */
+#home section:nth-child(2)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 12% !important;
+  right: 42% !important;
+  width: 25px !important;
+  height: 25px !important;
+  background: rgba(163, 230, 53, 0.1) !important;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%) !important;
+  animation: heroSpin 22s linear infinite reverse !important;
+  z-index: -1 !important;
+}
+
+#home section:nth-child(2)::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 15% !important;
+  right: 42% !important;
+  width: 20px !important;
+  height: 20px !important;
+  background: rgba(251, 146, 60, 0.1) !important;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%) !important;
+  animation: heroWave 14s ease-in-out infinite !important;
+  z-index: -1 !important;
+}
+
+/* MORE ORBITAL RINGS */
+#home .relative::before:nth-child(3) {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 400px !important;
+  height: 400px !important;
+  margin: -200px 0 0 -200px !important;
+  border: 1px solid rgba(139, 92, 246, 0.15) !important;
+  border-radius: 50% !important;
+  animation: heroOrbit 25s linear infinite !important;
+  z-index: -3 !important;
+}
+
+#home .relative::after:nth-child(3) {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 420px !important;
+  height: 420px !important;
+  margin: -210px 0 0 -210px !important;
+  border: 1px solid rgba(59, 130, 246, 0.12) !important;
+  border-radius: 50% !important;
+  animation: heroOrbit 30s linear infinite reverse !important;
+  z-index: -3 !important;
+}
+
+/* ADDITIONAL SMALL PARTICLES */
+#home .flex:nth-child(1)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 28% !important;
+  left: 18% !important;
+  width: 2px !important;
+  height: 2px !important;
+  background: rgba(147, 51, 234, 0.8) !important;
+  border-radius: 50% !important;
+  animation: heroFlicker 3s ease-in-out infinite !important;
+  z-index: 0 !important;
+}
+
+#home .flex:nth-child(1)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 72% !important;
+  left: 18% !important;
+  width: 3px !important;
+  height: 3px !important;
+  background: rgba(34, 211, 238, 0.7) !important;
+  border-radius: 50% !important;
+  animation: heroFlicker 4s ease-in-out infinite reverse !important;
+  z-index: 0 !important;
+}
+
+#home .flex:nth-child(2)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 32% !important;
+  right: 18% !important;
+  width: 2px !important;
+  height: 2px !important;
+  background: rgba(251, 191, 36, 0.8) !important;
+  border-radius: 50% !important;
+  animation: heroPulse 6s ease-in-out infinite !important;
+  z-index: 0 !important;
+}
+
+#home .flex:nth-child(2)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 68% !important;
+  right: 18% !important;
+  width: 3px !important;
+  height: 3px !important;
+  background: rgba(239, 68, 68, 0.7) !important;
+  border-radius: 50% !important;
+  animation: heroPulse 7s ease-in-out infinite reverse !important;
+  z-index: 0 !important;
+}
+
+/* REMOVE SHINE FROM HERO IMAGE */
+#home img {
+  position: relative !important;
+  z-index: 1 !important;
+  filter: none !important;
+  transition: all 0.5s ease !important;
+}
+
+#home .relative.z-10.h-\[320px\].w-\[320px\]:hover img {
+  filter: none !important;
+  transform: none !important;
+}
+
+/* REMOVE SHIMMER EFFECT */
+#home .shimmer {
+  display: none !important;
 }
 
 /* HERO AND SECTIONS - VIBRANT COLORS */
@@ -579,6 +1595,7 @@ body {
     box-shadow: 0 0 0 6px rgba(91, 102, 255, 0.08), 0 0 60px rgba(255, 106, 213, 0.25);
   }
 }
+
 
 /* Scroll snap-friendly section padding */
 section {

@@ -92,8 +92,8 @@ export const SKILLS = [
     Icon: FaCode,
     color: 'from-brand-500 to-brand-300',
     items: [
-      { name: 'C', Icon: SiC, color: '#00599C' },
-      { name: 'Java', Icon: FaJava, color: '#E76F00' },
+      { name: 'C', Icon: SiC, color: '#A8B9CC' },
+      { name: 'Java', Icon: FaJava, color: '#007396' },
       { name: 'JavaScript', Icon: SiJavascript, color: '#F7DF1E' },
       { name: 'Python', Icon: FaPython, color: '#3776AB' },
     ],
@@ -104,8 +104,8 @@ export const SKILLS = [
     color: 'from-accent-pink to-brand-400',
     items: [
       { name: 'React.js', Icon: FaReact, color: '#61DAFB' },
-      { name: 'Node.js', Icon: FaNodeJs, color: '#3C873A' },
-      { name: 'Express.js', Icon: SiExpress, color: '#222222' },
+      { name: 'Node.js', Icon: FaNodeJs, color: '#339933' },
+      { name: 'Express.js', Icon: SiExpress, color: '#000000' },
     ],
   },
   {
@@ -139,7 +139,7 @@ export const SKILLS = [
     items: [
       { name: 'VS Code', Icon: VscCode, color: '#007ACC' },
       { name: 'Eclipse', Icon: SiEclipseide, color: '#2C2255' },
-      { name: 'PyCharm', Icon: SiPycharm, color: '#21D789' },
+      { name: 'PyCharm', Icon: SiPycharm, color: '#6C6C6C' },
       { name: 'Postman', Icon: SiPostman, color: '#FF6C37' },
       { name: 'MySQL Workbench', Icon: SiMysql, color: '#4479A1' },
     ],
@@ -158,7 +158,7 @@ export const SKILLS = [
     Icon: FaSitemap,
     color: 'from-brand-400 to-accent-pink',
     items: [
-      { name: 'Proficient in DSA', Icon: FaProjectDiagram, color: '#5b66ff' },
+      { name: 'Proficient in DSA', Icon: FaProjectDiagram, color: '#FF6B35' },
     ],
   },
 ]
