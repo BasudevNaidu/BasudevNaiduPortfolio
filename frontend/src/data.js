@@ -242,7 +242,7 @@ export const CONTACTS = [
   },
   {
     name: 'Instagram',
-    handle: '@basudev7788',
+    handle: '@basudev1728',
     url: 'https://www.instagram.com/basudev1728/',
     color: 'from-accent-pink to-accent-peach',
   },
