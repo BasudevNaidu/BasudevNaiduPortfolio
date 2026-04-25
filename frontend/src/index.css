@@ -232,11 +232,165 @@ body {
 }
 
 [data-theme="dark"] button,
-[data-theme="dark"] .btn {
+[data-theme="dark"] .btn,
+[data-theme="dark"] input[type="button"],
+[data-theme="dark"] input[type="submit"],
+[data-theme="dark"] .button,
+[data-theme="dark"] [class*="button"],
+[data-theme="dark"] [class*="Button"] {
   color: #ffffff !important;
-  background: rgba(96, 165, 250, 0.3) !important;
-  border: 2px solid rgba(96, 165, 250, 0.5) !important;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+  border: 2px solid #a78bfa !important;
   font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+[data-theme="dark"] button:hover,
+[data-theme="dark"] .btn:hover,
+[data-theme="dark"] input[type="button"]:hover,
+[data-theme="dark"] input[type="submit"]:hover,
+[data-theme="dark"] .button:hover,
+[data-theme="dark"] [class*="button"]:hover,
+[data-theme="dark"] [class*="Button"]:hover {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+  border: 2px solid #c4b5fd !important;
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6) !important;
+  transform: translateY(-2px) !important;
+}
+
+[data-theme="dark"] button:active,
+[data-theme="dark"] .btn:active,
+[data-theme="dark"] input[type="button"]:active,
+[data-theme="dark"] input[type="submit"]:active,
+[data-theme="dark"] .button:active,
+[data-theme="dark"] [class*="button"]:active,
+[data-theme="dark"] [class*="Button"]:active {
+  background: linear-gradient(135deg, #6d28d9, #5b21b6) !important;
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.4) !important;
+}
+
+/* CATCH ALL GREY BUTTONS - COMPREHENSIVE STYLING */
+[data-theme="dark"] * {
+  background-color: transparent !important;
+}
+
+[data-theme="dark"] button,
+[data-theme="dark"] .btn,
+[data-theme="dark"] input[type="button"],
+[data-theme="dark"] input[type="submit"],
+[data-theme="dark"] .button,
+[data-theme="dark"] [class*="button"],
+[data-theme="dark"] [class*="Button"],
+[data-theme="dark"] [role="button"],
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .btn-success,
+[data-theme="dark"] .btn-danger,
+[data-theme="dark"] .btn-warning,
+[data-theme="dark"] .btn-info,
+[data-theme="dark"] .btn-light,
+[data-theme="dark"] .btn-dark,
+[data-theme="dark"] [class*="btn-"] {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+  border: 2px solid #a78bfa !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+[data-theme="dark"] button:hover,
+[data-theme="dark"] .btn:hover,
+[data-theme="dark"] input[type="button"]:hover,
+[data-theme="dark"] input[type="submit"]:hover,
+[data-theme="dark"] .button:hover,
+[data-theme="dark"] [class*="button"]:hover,
+[data-theme="dark"] [class*="Button"]:hover,
+[data-theme="dark"] [role="button"]:hover,
+[data-theme="dark"] .btn-primary:hover,
+[data-theme="dark"] .btn-secondary:hover,
+[data-theme="dark"] .btn-success:hover,
+[data-theme="dark"] .btn-danger:hover,
+[data-theme="dark"] .btn-warning:hover,
+[data-theme="dark"] .btn-info:hover,
+[data-theme="dark"] .btn-light:hover,
+[data-theme="dark"] .btn-dark:hover,
+[data-theme="dark"] [class*="btn-"]:hover {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+  border: 2px solid #c4b5fd !important;
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* FORCE ALL BUTTON ELEMENTS TO HAVE PURPLE STYLING */
+[data-theme="dark"] [onclick],
+[data-theme="dark"] [onmousedown],
+[data-theme="dark"] [onmouseup],
+[data-theme="dark"] [role="button"],
+[data-theme="dark"] button *,
+[data-theme="dark"] .btn *,
+[data-theme="dark"] input[type="button"] *,
+[data-theme="dark"] input[type="submit"] *,
+[data-theme="dark"] [class*="button"] *,
+[data-theme="dark"] [class*="Button"] * {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] button *,
+[data-theme="dark"] .btn *,
+[data-theme="dark"] input[type="button"] *,
+[data-theme="dark"] input[type="submit"] *,
+[data-theme="dark"] [class*="button"] *,
+[data-theme="dark"] [class*="Button"] * {
+  background: transparent !important;
+}
+
+/* FIX FLOATING SKILL CIRCLES IN DARK MODE */
+[data-theme="dark"] .rounded-full,
+[data-theme="dark"] [class*="rounded-full"] {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+  border: 2px solid #a78bfa !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
+}
+
+[data-theme="dark"] .rounded-full:hover,
+[data-theme="dark"] [class*="rounded-full"]:hover {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+  border: 2px solid #c4b5fd !important;
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6) !important;
+  transform: translateY(-2px) !important;
+}
+
+[data-theme="dark"] .rounded-full *,
+[data-theme="dark"] [class*="rounded-full"] * {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] [class*="bg-white"] {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .text-brand-700,
+[data-theme="dark"] [class*="text-brand-700"] {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .border-brand-100,
+[data-theme="dark"] [class*="border-brand"] {
+  border-color: #a78bfa !important;
+}
+
+[data-theme="dark"] .shadow-sm,
+[data-theme="dark"] [class*="shadow"] {
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
 }
 
 [data-theme="dark"] th,
