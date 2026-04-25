@@ -10,9 +10,9 @@ export const ThemeToggle = () => {
     <motion.button
       onClick={toggleTheme}
       disabled={isTransitioning}
-      className={`fixed top-6 right-6 z-50 p-3 rounded-full transition-all duration-300 shadow-lg ${
-        theme === 'light' 
-          ? 'bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500 text-white shadow-glow' 
+      className={`fixed top-6 right-6 z-50 p-3 rounded-full transition-all duration-300 shadow-lg group ${
+        theme === 'light'
+          ? 'bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500 text-white shadow-glow'
           : 'bg-gradient-to-r from-gray-800 to-gray-900 text-white'
       }`}
       whileHover={{ scale: 1.05 }}
@@ -26,17 +26,6 @@ export const ThemeToggle = () => {
       <AnimatePresence mode="wait">
         {theme === 'light' ? (
           <motion.div
-            key="sun"
-            initial={{ rotate: -90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center justify-center w-full h-full"
-          >
-            <FaSun className="text-xl" />
-          </motion.div>
-        ) : (
-          <motion.div
             key="moon"
             initial={{ rotate: -90, opacity: 0 }}
             animate={{ rotate: 0, opacity: 1 }}
@@ -46,11 +35,22 @@ export const ThemeToggle = () => {
           >
             <FaMoon className="text-xl" />
           </motion.div>
+        ) : (
+          <motion.div
+            key="sun"
+            initial={{ rotate: -90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: 90, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex items-center justify-center w-full h-full"
+          >
+            <FaSun className="text-xl" />
+          </motion.div>
         )}
       </AnimatePresence>
 
       {/* Simple tooltip */}
-      <div className="absolute top-full mt-2 right-0 px-2 py-1 text-xs font-medium rounded bg-gray-900 text-white whitespace-nowrap opacity-0 hover:opacity-100 transition-opacity">
+      <div className="absolute top-full mt-2 right-0 px-3 py-1.5 text-xs font-medium bg-black/80 text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded shadow-lg">
         {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
       </div>
     </motion.button>
