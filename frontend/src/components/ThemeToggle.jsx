@@ -50,8 +50,8 @@ export const ThemeToggle = () => {
       </AnimatePresence>
 
       {/* Simple tooltip */}
-      <div className="absolute top-full mt-2 right-0 px-3 py-1.5 text-xs font-medium bg-black/80 text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded shadow-lg">
-        {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+      <div className="absolute top-full mt-2 right-0 px-3 py-1.5 text-xs font-medium bg-black/80 text-white whitespace-nowrap opacity-0 hover:opacity-100 transition-opacity pointer-events-none rounded shadow-lg">
+        {theme === 'light' ? 'Light Mode' : 'Dark Mode'}
       </div>
     </motion.button>
   )

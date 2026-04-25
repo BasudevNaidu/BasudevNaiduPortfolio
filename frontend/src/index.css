@@ -1747,7 +1747,63 @@ body::after {
 
 /* ABOUT SECTION PARTICLES REMOVED - ORIGINAL ANIMATIONS PRESERVED */
 
-/* SKILLS SECTION PARTICLES REMOVED */
+/* CONTACT SECTION PARTICLES - REMOVED */
+
+/* Disable universal particles for Contact section */
+#contact::before,
+#contact::after,
+#contact .flex::before,
+#contact .flex::after,
+#contact section::before,
+#contact section::after,
+section#contact::before,
+section#contact::after,
+section#contact:nth-child(odd)::before,
+section#contact:nth-child(even)::after,
+main#contact::before,
+main#contact::after {
+  display: none !important;
+}
+
+/* Also disable in dark mode */
+[data-theme="dark"] #contact::before,
+[data-theme="dark"] #contact::after,
+[data-theme="dark"] #contact .flex::before,
+[data-theme="dark"] #contact .flex::after,
+[data-theme="dark"] section#contact::before,
+[data-theme="dark"] section#contact::after,
+[data-theme="dark"] section#contact:nth-child(odd)::before,
+[data-theme="dark"] section#contact:nth-child(even)::after,
+[data-theme="dark"] main#contact::before,
+[data-theme="dark"] main#contact::after {
+  display: none !important;
+}
+
+/* Override universal section particles for Contact specifically */
+section#contact::before,
+section#contact::after,
+section#contact:nth-child(odd)::before,
+section#contact:nth-child(even)::after {
+  display: none !important;
+}
+
+[data-theme="dark"] section#contact::before,
+[data-theme="dark"] section#contact::after,
+[data-theme="dark"] section#contact:nth-child(odd)::before,
+[data-theme="dark"] section#contact:nth-child(even)::after {
+  display: none !important;
+}
+
+/* Also override main particles for Contact */
+main section#contact::before,
+main section#contact::after {
+  display: none !important;
+}
+
+[data-theme="dark"] main section#contact::before,
+[data-theme="dark"] main section#contact::after {
+  display: none !important;
+}
 
 /* PROJECTS SECTION PARTICLES */
 #projects::before {
@@ -1806,62 +1862,7 @@ body::after {
   box-shadow: 0 0 22px rgba(124, 58, 237, 0.7) !important;
 }
 
-/* CONTACT SECTION PARTICLES */
-#contact::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 18% !important;
-  left: 9% !important;
-  width: 8px !important;
-  height: 8px !important;
-  background: rgba(20, 184, 166, 0.9) !important;
-  border-radius: 50% !important;
-  animation: particleWave 13s linear infinite !important;
-  z-index: 0 !important;
-  box-shadow: 0 0 20px rgba(20, 184, 166, 0.7) !important;
-}
-
-#contact::after {
-  content: '' !important;
-  position: absolute !important;
-  top: 28% !important;
-  right: 11% !important;
-  width: 6px !important;
-  height: 6px !important;
-  background: rgba(239, 68, 68, 0.9) !important;
-  border-radius: 50% !important;
-  animation: particleOrbit 14s linear infinite reverse !important;
-  z-index: 0 !important;
-  box-shadow: 0 0 16px rgba(239, 68, 68, 0.7) !important;
-}
-
-#contact .flex::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 38% !important;
-  left: 14% !important;
-  width: 7px !important;
-  height: 7px !important;
-  background: rgba(139, 92, 246, 0.9) !important;
-  border-radius: 50% !important;
-  animation: particleSpiral 11s linear infinite !important;
-  z-index: 0 !important;
-  box-shadow: 0 0 18px rgba(139, 92, 246, 0.7) !important;
-}
-
-#contact .flex::after {
-  content: '' !important;
-  position: absolute !important;
-  top: 48% !important;
-  right: 17% !important;
-  width: 9px !important;
-  height: 9px !important;
-  background: rgba(59, 130, 246, 0.9) !important;
-  border-radius: 50% !important;
-  animation: particlePulse 8s ease-in-out infinite !important;
-  z-index: 0 !important;
-  box-shadow: 0 0 22px rgba(59, 130, 246, 0.7) !important;
-}
+/* CONTACT SECTION PARTICLES - REMOVED */
 
 /* ADDITIONAL UNIVERSAL PARTICLES */
 section:nth-child(odd)::before {
@@ -1918,6 +1919,19 @@ main::after {
   animation: particleOrbit 18s linear infinite reverse !important;
   z-index: 0 !important;
   box-shadow: 0 0 16px rgba(168, 85, 247, 0.7) !important;
+}
+
+/* DISABLE PARTICLES FOR CONTACT SECTION - MUST COME AFTER UNIVERSAL RULES */
+section#contact::before,
+section#contact::after,
+section#contact:nth-child(odd)::before,
+section#contact:nth-child(even)::after {
+  display: none !important;
+}
+
+main section#contact::before,
+main section#contact::after {
+  display: none !important;
 }
 
 /* DARK MODE ORBITAL PARTICLES - MORE PARTICLES FOR VISIBILITY */
@@ -2199,6 +2213,23 @@ main::after {
   animation: particleOrbit 16s linear infinite reverse !important;
   z-index: 0 !important;
   box-shadow: 0 0 24px rgba(168, 85, 247, 0.9) !important;
+}
+
+/* FINAL OVERRIDE - DISABLE ALL PARTICLES IN CONTACT SECTION */
+section#contact::before,
+section#contact::after,
+section#contact:nth-child(odd)::before,
+section#contact:nth-child(even)::after,
+main section#contact::before,
+main section#contact::after,
+[data-theme="dark"] section#contact::before,
+[data-theme="dark"] section#contact::after,
+[data-theme="dark"] section#contact:nth-child(odd)::before,
+[data-theme="dark"] section#contact:nth-child(even)::after,
+[data-theme="dark"] main section#contact::before,
+[data-theme="dark"] main section#contact::after {
+  display: none !important;
+  content: none !important;
 }
 
 /* Scroll snap-friendly section padding */
