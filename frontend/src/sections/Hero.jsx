@@ -134,7 +134,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="mt-8 flex flex-wrap gap-4"
+            className="mt-8 flex flex-wrap gap-3 sm:gap-4 md:gap-5"
           >
             <a
               href="#contact"

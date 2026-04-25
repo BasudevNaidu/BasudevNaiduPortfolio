@@ -212,7 +212,7 @@ export default function Projects() {
           loop. Hover for the parallax tilt.
         </motion.p>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((p, i) => {
             const grad = GRADIENTS[i % GRADIENTS.length]
             return (

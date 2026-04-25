@@ -94,7 +94,7 @@ export default function Footer() {
             <h4 className="mb-3 font-display text-sm uppercase tracking-widest text-brand-700/70">
               Reach Me
             </h4>
-            <div className="flex gap-3">
+            <div className="flex gap-2 sm:gap-3 md:gap-4">
               {[
                 {
                   Icon: FaLinkedin,

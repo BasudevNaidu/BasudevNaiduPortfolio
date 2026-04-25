@@ -78,7 +78,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-8 flex flex-wrap gap-2 sm:gap-3 md:gap-4"
           >
             {['Problem Solver', 'Full Stack', 'DevOps Curious', 'Builder'].map(
               (tag) => (

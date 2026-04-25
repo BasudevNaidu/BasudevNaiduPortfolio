@@ -9,7 +9,7 @@ export default function Skills() {
       <div className="mx-auto max-w-6xl">
         <SectionTitle eyebrow="my arsenal" title="Skills & Technologies" />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
           {SKILLS.map((s, i) => {
             const CatIcon = s.Icon
             return (

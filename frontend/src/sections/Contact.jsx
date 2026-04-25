@@ -114,8 +114,8 @@ export default function Contact() {
   isDark ? 'glass-strong' : 'glass'
 }`}
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid gap-6 sm:grid-cols-2">
+          <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+            <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
               {/* Name Input */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-brand-700 mb-2">
