@@ -67,7 +67,7 @@ export default function Coding() {
           algorithms, data structures, and contest-grade thinking.
         </motion.p>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:gap-8">
           {CODING_PROFILES.map((c, i) => {
             const Icon = ICONS[c.name]
             return (
@@ -140,8 +140,8 @@ export default function Coding() {
                     ))}
 
                     {/* Inner glass card */}
-                    <div className="relative m-[1.5px] rounded-[1.45rem] bg-white/75 p-7 backdrop-blur-md">
-                      <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="relative m-[1.5px] rounded-[1.45rem] bg-white/75 p-5 sm:p-7 backdrop-blur-md">
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6 md:gap-8">
                         <div className="flex items-center gap-5">
                           <motion.div
                             whileHover={{ rotate: 14, scale: 1.15 }}
@@ -177,7 +177,7 @@ export default function Coding() {
                           href={c.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="group/btn relative inline-flex items-center gap-2 self-start overflow-hidden rounded-full px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105"
+                          className="group/btn relative inline-flex items-center gap-2 self-start sm:self-center overflow-hidden rounded-full px-4 py-2.5 sm:px-5 sm:py-3 md:px-6 md:py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105"
                           style={{
                             backgroundImage: `linear-gradient(135deg, ${c.accent}, ${c.softAccent})`,
                             boxShadow: `0 12px 30px -10px ${c.accent}66`,
