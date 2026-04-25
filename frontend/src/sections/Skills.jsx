@@ -22,9 +22,6 @@ export default function Skills() {
                 whileHover={{ y: -8, rotate: -0.5 }}
                 className="border-gradient glass-strong shadow-soft group relative overflow-hidden rounded-2xl p-6"
               >
-                <div
-                  className={`pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-to-br ${s.color} opacity-20 blur-2xl transition group-hover:opacity-40`}
-                />
                 <div className="relative">
                   <div className="flex items-center gap-3">
                     <motion.span

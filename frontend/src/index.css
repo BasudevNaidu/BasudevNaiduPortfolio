@@ -1597,6 +1597,610 @@ footer::before {
 }
 
 
+/* MOTION PARTICLES FOR ALL SECTIONS - 25-30 PARTICLES */
+@keyframes particleFloat {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes particleSpiral {
+  0% { transform: rotate(0deg) translateX(0) translateY(0); }
+  25% { transform: rotate(90deg) translateX(40px) translateY(-20px); }
+  50% { transform: rotate(180deg) translateX(0) translateY(-40px); }
+  75% { transform: rotate(270deg) translateX(-40px) translateY(-20px); }
+  100% { transform: rotate(360deg) translateX(0) translateY(0); }
+}
+
+@keyframes particlePulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+@keyframes particleOrbit {
+  0% { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+}
+
+@keyframes particleWave {
+  0% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(30px) translateY(-40px); }
+  50% { transform: translateX(60px) translateY(0); }
+  75% { transform: translateX(30px) translateY(40px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+/* GLOBAL BODY PARTICLES */
+body::before {
+  content: '' !important;
+  position: fixed !important;
+  top: 10% !important;
+  left: 5% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(139, 92, 246, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleFloat 12s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.7) !important;
+}
+
+body::after {
+  content: '' !important;
+  position: fixed !important;
+  top: 20% !important;
+  right: 8% !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(59, 130, 246, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleFloat 15s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.7) !important;
+}
+
+/* HOME SECTION PARTICLES */
+#home::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 15% !important;
+  left: 10% !important;
+  width: 7px !important;
+  height: 7px !important;
+  background: rgba(236, 72, 153, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleSpiral 10s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 18px rgba(236, 72, 153, 0.7) !important;
+}
+
+#home::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 25% !important;
+  right: 12% !important;
+  width: 9px !important;
+  height: 9px !important;
+  background: rgba(34, 197, 94, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particlePulse 8s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 22px rgba(34, 197, 94, 0.7) !important;
+}
+
+#home .relative::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 35% !important;
+  left: 15% !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(251, 191, 36, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleOrbit 14s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.7) !important;
+}
+
+#home .relative::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 45% !important;
+  right: 18% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(239, 68, 68, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleFloat 11s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.7) !important;
+}
+
+#home .motion-div::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 55% !important;
+  left: 20% !important;
+  width: 7px !important;
+  height: 7px !important;
+  background: rgba(34, 211, 238, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleWave 13s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.7) !important;
+}
+
+#home .motion-div::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 65% !important;
+  right: 22% !important;
+  width: 9px !important;
+  height: 9px !important;
+  background: rgba(16, 185, 129, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particlePulse 9s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 22px rgba(16, 185, 129, 0.7) !important;
+}
+
+/* ABOUT SECTION PARTICLES REMOVED - ORIGINAL ANIMATIONS PRESERVED */
+
+/* SKILLS SECTION PARTICLES REMOVED */
+
+/* PROJECTS SECTION PARTICLES */
+#projects::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 20% !important;
+  left: 7% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(234, 179, 8, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleOrbit 15s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.7) !important;
+}
+
+#projects::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 30% !important;
+  right: 9% !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(34, 197, 94, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleSpiral 12s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.7) !important;
+}
+
+#projects .grid::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 40% !important;
+  left: 13% !important;
+  width: 7px !important;
+  height: 7px !important;
+  background: rgba(244, 63, 94, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleFloat 10s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 18px rgba(244, 63, 94, 0.7) !important;
+}
+
+#projects .grid::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  right: 16% !important;
+  width: 9px !important;
+  height: 9px !important;
+  background: rgba(124, 58, 237, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particlePulse 9s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 22px rgba(124, 58, 237, 0.7) !important;
+}
+
+/* CONTACT SECTION PARTICLES */
+#contact::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 18% !important;
+  left: 9% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(20, 184, 166, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleWave 13s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.7) !important;
+}
+
+#contact::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 28% !important;
+  right: 11% !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(239, 68, 68, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleOrbit 14s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.7) !important;
+}
+
+#contact .flex::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 38% !important;
+  left: 14% !important;
+  width: 7px !important;
+  height: 7px !important;
+  background: rgba(139, 92, 246, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleSpiral 11s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.7) !important;
+}
+
+#contact .flex::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 48% !important;
+  right: 17% !important;
+  width: 9px !important;
+  height: 9px !important;
+  background: rgba(59, 130, 246, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particlePulse 8s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 22px rgba(59, 130, 246, 0.7) !important;
+}
+
+/* ADDITIONAL UNIVERSAL PARTICLES */
+section:nth-child(odd)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 60% !important;
+  left: 22% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(236, 72, 153, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleFloat 16s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.7) !important;
+}
+
+section:nth-child(even)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 70% !important;
+  right: 24% !important;
+  width: 7px !important;
+  height: 7px !important;
+  background: rgba(34, 197, 94, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleSpiral 14s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.7) !important;
+}
+
+main::before {
+  content: '' !important;
+  position: fixed !important;
+  bottom: 15% !important;
+  left: 10% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(251, 191, 36, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleWave 17s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.7) !important;
+}
+
+main::after {
+  content: '' !important;
+  position: fixed !important;
+  bottom: 25% !important;
+  right: 12% !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(168, 85, 247, 0.9) !important;
+  border-radius: 50% !important;
+  animation: particleOrbit 18s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.7) !important;
+}
+
+/* DARK MODE ORBITAL PARTICLES - MORE PARTICLES FOR VISIBILITY */
+[data-theme="dark"] body::before {
+  content: '' !important;
+  position: fixed !important;
+  top: 5% !important;
+  left: 3% !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(139, 92, 246, 1) !important;
+  border-radius: 50% !important;
+  animation: particleFloat 10s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.9) !important;
+}
+
+[data-theme="dark"] body::after {
+  content: '' !important;
+  position: fixed !important;
+  top: 15% !important;
+  right: 5% !important;
+  width: 12px !important;
+  height: 12px !important;
+  background: rgba(59, 130, 246, 1) !important;
+  border-radius: 50% !important;
+  animation: particleFloat 13s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 35px rgba(59, 130, 246, 0.9) !important;
+}
+
+[data-theme="dark"] #home::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 10% !important;
+  left: 8% !important;
+  width: 9px !important;
+  height: 9px !important;
+  background: rgba(236, 72, 153, 1) !important;
+  border-radius: 50% !important;
+  animation: particleSpiral 8s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 25px rgba(236, 72, 153, 0.9) !important;
+}
+
+[data-theme="dark"] #home::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 20% !important;
+  right: 10% !important;
+  width: 11px !important;
+  height: 11px !important;
+  background: rgba(34, 197, 94, 1) !important;
+  border-radius: 50% !important;
+  animation: particlePulse 6s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 28px rgba(34, 197, 94, 0.9) !important;
+}
+
+[data-theme="dark"] #home .relative::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 30% !important;
+  left: 12% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(251, 191, 36, 1) !important;
+  border-radius: 50% !important;
+  animation: particleOrbit 12s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 24px rgba(251, 191, 36, 0.9) !important;
+}
+
+[data-theme="dark"] #home .relative::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 40% !important;
+  right: 15% !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(239, 68, 68, 1) !important;
+  border-radius: 50% !important;
+  animation: particleFloat 9s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 26px rgba(239, 68, 68, 0.9) !important;
+}
+
+[data-theme="dark"] #home .motion-div::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 18% !important;
+  width: 9px !important;
+  height: 9px !important;
+  background: rgba(34, 211, 238, 1) !important;
+  border-radius: 50% !important;
+  animation: particleWave 11s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 25px rgba(34, 211, 238, 0.9) !important;
+}
+
+[data-theme="dark"] #home .motion-div::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 60% !important;
+  right: 20% !important;
+  width: 11px !important;
+  height: 11px !important;
+  background: rgba(16, 185, 129, 1) !important;
+  border-radius: 50% !important;
+  animation: particlePulse 7s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 29px rgba(16, 185, 129, 0.9) !important;
+}
+
+[data-theme="dark"] #projects::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 15% !important;
+  left: 5% !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(234, 179, 8, 1) !important;
+  border-radius: 50% !important;
+  animation: particleOrbit 13s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 27px rgba(234, 179, 8, 0.9) !important;
+}
+
+[data-theme="dark"] #projects::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 25% !important;
+  right: 7% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(34, 197, 94, 1) !important;
+  border-radius: 50% !important;
+  animation: particleSpiral 10s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 23px rgba(34, 197, 94, 0.9) !important;
+}
+
+[data-theme="dark"] #projects .grid::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 35% !important;
+  left: 10% !important;
+  width: 9px !important;
+  height: 9px !important;
+  background: rgba(244, 63, 94, 1) !important;
+  border-radius: 50% !important;
+  animation: particleFloat 8s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 25px rgba(244, 63, 94, 0.9) !important;
+}
+
+[data-theme="dark"] #projects .grid::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 45% !important;
+  right: 13% !important;
+  width: 11px !important;
+  height: 11px !important;
+  background: rgba(124, 58, 237, 1) !important;
+  border-radius: 50% !important;
+  animation: particlePulse 7s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 28px rgba(124, 58, 237, 0.9) !important;
+}
+
+[data-theme="dark"] #contact::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 12% !important;
+  left: 7% !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(20, 184, 166, 1) !important;
+  border-radius: 50% !important;
+  animation: particleWave 11s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 26px rgba(20, 184, 166, 0.9) !important;
+}
+
+[data-theme="dark"] #contact::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 22% !important;
+  right: 9% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(239, 68, 68, 1) !important;
+  border-radius: 50% !important;
+  animation: particleOrbit 12s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 24px rgba(239, 68, 68, 0.9) !important;
+}
+
+[data-theme="dark"] #contact .flex::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 32% !important;
+  left: 12% !important;
+  width: 9px !important;
+  height: 9px !important;
+  background: rgba(139, 92, 246, 1) !important;
+  border-radius: 50% !important;
+  animation: particleSpiral 9s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.9) !important;
+}
+
+[data-theme="dark"] #contact .flex::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 42% !important;
+  right: 15% !important;
+  width: 11px !important;
+  height: 11px !important;
+  background: rgba(59, 130, 246, 1) !important;
+  border-radius: 50% !important;
+  animation: particlePulse 6s ease-in-out infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 29px rgba(59, 130, 246, 0.9) !important;
+}
+
+[data-theme="dark"] section:nth-child(odd)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 55% !important;
+  left: 20% !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(236, 72, 153, 1) !important;
+  border-radius: 50% !important;
+  animation: particleFloat 14s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 27px rgba(236, 72, 153, 0.9) !important;
+}
+
+[data-theme="dark"] section:nth-child(even)::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 65% !important;
+  right: 22% !important;
+  width: 9px !important;
+  height: 9px !important;
+  background: rgba(34, 197, 94, 1) !important;
+  border-radius: 50% !important;
+  animation: particleSpiral 12s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.9) !important;
+}
+
+[data-theme="dark"] main::before {
+  content: '' !important;
+  position: fixed !important;
+  bottom: 10% !important;
+  left: 8% !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(251, 191, 36, 1) !important;
+  border-radius: 50% !important;
+  animation: particleWave 15s linear infinite !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 27px rgba(251, 191, 36, 0.9) !important;
+}
+
+[data-theme="dark"] main::after {
+  content: '' !important;
+  position: fixed !important;
+  bottom: 20% !important;
+  right: 10% !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(168, 85, 247, 1) !important;
+  border-radius: 50% !important;
+  animation: particleOrbit 16s linear infinite reverse !important;
+  z-index: 0 !important;
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.9) !important;
+}
+
 /* Scroll snap-friendly section padding */
 section {
   scroll-margin-top: 80px;
