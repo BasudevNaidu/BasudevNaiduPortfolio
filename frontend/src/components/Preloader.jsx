@@ -49,7 +49,7 @@ export const Preloader = ({ onComplete }) => {
   ]
 
   useEffect(() => {
-    const duration = 300
+    const duration = 200
     const interval = 10
     const increment = 100 / (duration / interval)
 
@@ -119,8 +119,8 @@ export const Preloader = ({ onComplete }) => {
         setIsVisible(false)
         setTimeout(() => {
           onComplete?.()
-        }, 50)
-      }, 50)
+        }, 30)
+      }, 30)
     }
   }, [progress, onComplete])
 
@@ -130,7 +130,7 @@ export const Preloader = ({ onComplete }) => {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.1 }}
+          transition={{ duration: 0.05 }}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black overflow-hidden font-mono"
         >
           {/* Clean uniform matrix rain */}
@@ -138,10 +138,10 @@ export const Preloader = ({ onComplete }) => {
             {[...Array(40)].map((_, colIndex) => (
               <div
                 key={colIndex}
-                className="absolute top-0 bottom-0 flex flex-col"
+                className="absolute top-0 bottom-0 flex flex-col justify-between"
                 style={{ left: `${colIndex * 2.5}%`, width: '2.5%' }}
               >
-                {[...Array(30)].map((_, rowIndex) => (
+                {[...Array(50)].map((_, rowIndex) => (
                   <motion.div
                     key={`${colIndex}-${rowIndex}`}
                     className="text-sm font-mono text-green-500 flex items-center justify-center"
