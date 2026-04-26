@@ -142,9 +142,19 @@ export default function Footer() {
             </motion.span>{' '}
             and lots of coffee.
           </p>
-          <p className="font-mono text-xs text-brand-700/60">
-            Crafted with React · Vite · Tailwind · Framer Motion
-          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/BasudevNaidu/BasudevNaiduPortfolio/blob/main/LICENSE"
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono text-xs font-semibold bg-gradient-to-r from-brand-500 to-accent-pink bg-clip-text text-transparent hover:opacity-80 transition"
+            >
+              View MIT License
+            </a>
+            <p className="font-mono text-xs text-brand-700/60">
+              Crafted with React · Vite · Tailwind · Framer Motion
+            </p>
+          </div>
         </div>
       </div>
     </footer>
