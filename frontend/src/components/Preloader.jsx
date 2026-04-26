@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion'
-import { FaCube, FaCode, FaPalette, FaRocket, FaCheck, FaCogs, FaAtom, FaGem } from 'react-icons/fa'
-
-const loadingSteps = [
-  { icon: FaCode, text: 'Initializing...', color: 'from-blue-500 to-cyan-400' },
-  { icon: FaPalette, text: 'Rendering UI...', color: 'from-pink-500 to-rose-400' },
-  { icon: FaCogs, text: 'Optimizing...', color: 'from-purple-500 to-violet-400' },
-  { icon: FaRocket, text: 'Launching...', color: 'from-orange-500 to-amber-400' },
-  { icon: FaCheck, text: 'Complete!', color: 'from-green-500 to-emerald-400' }
-]
+import { motion, AnimatePresence } from 'framer-motion'
 
 export const Preloader = ({ onComplete }) => {
   const [progress, setProgress] = useState(0)
-  const [currentStep, setCurrentStep] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
+  const [currentLine, setCurrentLine] = useState(0)
+  const [typingText, setTypingText] = useState('')
 
-  const rotateX = useTransform(mouseY, [-200, 200], [15, -15])
-  const rotateY = useTransform(mouseX, [-200, 200], [-15, 15])
+  const codeLines = [
+    'import React from "react"',
+    'const Portfolio = () => {',
+    '  const [loading, setLoading] = useState(true)',
+    '  useEffect(() => {',
+    '    setTimeout(() => setLoading(false), 3000)',
+    '  }, [])',
+    '  return <div className="portfolio">Loading...</div>',
+    '}'
+  ]
 
   useEffect(() => {
     const duration = 3000
@@ -35,17 +33,13 @@ export const Preloader = ({ onComplete }) => {
       })
     }, interval)
 
-    const stepInterval = setInterval(() => {
-      setCurrentStep(prev => {
-        if (prev >= 4) return 4
-        const newStep = Math.min(Math.floor((progress / 100) * 5), 4)
-        return newStep
-      })
-    }, 600)
+    const typingTimer = setInterval(() => {
+      setCurrentLine(prev => (prev + 1) % codeLines.length)
+    }, 400)
 
     return () => {
       clearInterval(timer)
-      clearInterval(stepInterval)
+      clearInterval(typingTimer)
     }
   }, [])
 
@@ -60,317 +54,192 @@ export const Preloader = ({ onComplete }) => {
     }
   }, [progress, onComplete])
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    mouseX.set(e.clientX - rect.left - rect.width / 2)
-    mouseY.set(e.clientY - rect.top - rect.height / 2)
-  }
-
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black overflow-hidden"
-          onMouseMove={handleMouseMove}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0d1117] overflow-hidden font-mono"
         >
-          {/* Multi-layer 3D Background */}
-          <div className="absolute inset-0">
-            {/* Deep space gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950" />
-            
-            {/* Animated starfield */}
-            {[...Array(100)].map((_, i) => (
+          {/* Matrix rain background */}
+          <div className="absolute inset-0 overflow-hidden opacity-20">
+            {[...Array(50)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-0.5 h-0.5 bg-white rounded-full"
-                initial={{
-                  x: Math.random() * 100 + '%',
-                  y: Math.random() * 100 + '%',
-                  scale: Math.random() * 2,
-                  opacity: Math.random()
-                }}
-                animate={{
-                  scale: [1, 2, 1],
-                  opacity: [0.3, 1, 0.3]
-                }}
+                className="absolute text-green-400 text-xs"
+                initial={{ x: Math.random() * 100 + '%', y: '-100%' }}
+                animate={{ y: '200%' }}
                 transition={{
-                  duration: 2 + Math.random() * 3,
+                  duration: 3 + Math.random() * 4,
                   repeat: Infinity,
-                  delay: Math.random() * 2
+                  delay: Math.random() * 5
                 }}
-              />
+                style={{ left: `${Math.random() * 100}%` }}
+              >
+                {Array(20).fill(0).map(() => Math.random() > 0.5 ? '1' : '0').join('')}
+              </motion.div>
             ))}
-
-            {/* Nebula effect */}
-            <div className="absolute inset-0">
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 360]
-                }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
-              />
-              <motion.div
-                animate={{
-                  scale: [1.2, 1, 1.2],
-                  rotate: [360, 0]
-                }}
-                transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-                className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
-              />
-            </div>
-
-            {/* Grid floor */}
-            <div className="absolute bottom-0 left-0 right-0 h-1/2 perspective-1000">
-              <svg className="w-full h-full opacity-10" preserveAspectRatio="none">
-                <defs>
-                  <pattern id="floorGrid" width="50" height="50" patternUnits="userSpaceOnUse">
-                    <path d="M 50 0 L 0 0 0 50" fill="none" stroke="white" strokeWidth="0.5"/>
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#floorGrid)" />
-              </svg>
-            </div>
           </div>
 
-          {/* Main 3D Scene */}
-          <motion.div
-            style={{
-              rotateX,
-              rotateY,
-              transformStyle: 'preserve-3d',
-              perspective: 1000
-            }}
-            className="relative z-10 w-full max-w-2xl px-6"
-          >
-            {/* Central 3D Object Cluster */}
-            <div className="relative flex justify-center items-center mb-16 h-64">
-              {/* Main rotating cube */}
-              <motion.div
-                animate={{ rotateY: 360, rotateX: 360, rotateZ: 180 }}
-                transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-                className="relative w-24 h-24"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                {[
-                  { rotate: 'rotateY(0deg) translateZ(48px)', bg: 'from-blue-500 to-cyan-400' },
-                  { rotate: 'rotateY(180deg) translateZ(48px)', bg: 'from-purple-500 to-pink-400' },
-                  { rotate: 'rotateY(90deg) translateZ(48px)', bg: 'from-pink-500 to-rose-400' },
-                  { rotate: 'rotateY(-90deg) translateZ(48px)', bg: 'from-orange-500 to-amber-400' },
-                  { rotate: 'rotateX(90deg) translateZ(48px)', bg: 'from-green-500 to-emerald-400' },
-                  { rotate: 'rotateX(-90deg) translateZ(48px)', bg: 'from-indigo-500 to-violet-400' }
-                ].map((face, i) => (
-                  <motion.div
-                    key={i}
-                    className={`absolute inset-0 bg-gradient-to-br ${face.bg} opacity-90 flex items-center justify-center border border-white/20`}
-                    style={{
-                      transform: face.rotate,
-                      backfaceVisibility: 'visible',
-                      boxShadow: '0 0 40px rgba(255,255,255,0.2)'
-                    }}
-                  >
-                    <FaCube className="text-white text-2xl" />
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Orbiting spheres */}
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 5 + i * 2, repeat: Infinity, ease: 'linear' }}
-                  className="absolute"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                  <motion.div
-                    className={`w-8 h-8 rounded-full bg-gradient-to-br ${
-                      i === 0 ? 'from-pink-500 to-rose-400' : i === 1 ? 'from-cyan-500 to-blue-400' : 'from-amber-500 to-orange-400'
-                    }`}
-                    style={{
-                      transform: `translateX(${80 + i * 20}px)`,
-                      boxShadow: '0 0 20px rgba(255,255,255,0.3)'
-                    }}
-                  />
-                </motion.div>
-              ))}
-
-              {/* Outer rotating ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                className="absolute"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <div
-                  className="w-48 h-48 rounded-full border-2 border-white/30"
-                  style={{
-                    transform: 'rotateX(90deg)',
-                    boxShadow: '0 0 30px rgba(168, 85, 247, 0.3)'
-                  }}
-                />
-              </motion.div>
-
-              {/* Inner rotating ring */}
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-                className="absolute"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <div
-                  className="w-36 h-36 rounded-full border border-white/20"
-                  style={{
-                    transform: 'rotateX(90deg) rotateY(45deg)',
-                    boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)'
-                  }}
-                />
-              </motion.div>
-
-              {/* Floating particles around center */}
-              {[...Array(12)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-2 h-2 bg-white rounded-full"
-                  initial={{
-                    x: (Math.random() - 0.5) * 200,
-                    y: (Math.random() - 0.5) * 200,
-                    z: (Math.random() - 0.5) * 100
-                  }}
-                  animate={{
-                    x: [(Math.random() - 0.5) * 200, (Math.random() - 0.5) * 200],
-                    y: [(Math.random() - 0.5) * 200, (Math.random() - 0.5) * 200],
-                    z: [(Math.random() - 0.5) * 100, (Math.random() - 0.5) * 100],
-                    scale: [0.5, 1, 0.5],
-                    opacity: [0.3, 1, 0.3]
-                  }}
-                  transition={{
-                    duration: 2 + Math.random() * 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut'
-                  }}
-                  style={{
-                    filter: 'blur(1px)',
-                    boxShadow: '0 0 10px rgba(255,255,255,0.5)'
-                  }}
-                />
-              ))}
+          {/* Main terminal window */}
+          <div className="relative z-10 w-full max-w-4xl mx-6">
+            {/* Terminal header */}
+            <div className="bg-[#161b22] rounded-t-lg border-b border-[#30363d] px-4 py-3 flex items-center gap-2">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                <div className="w-3 h-3 rounded-full bg-[#27ca40]" />
+              </div>
+              <span className="text-gray-400 text-sm ml-4">portfolio.jsx — loading</span>
             </div>
 
-            {/* Loading Steps with 3D cards */}
-            <div className="grid grid-cols-5 gap-2 mb-8">
-              {loadingSteps.map((step, index) => {
-                const Icon = step.icon
-                const isActive = index === currentStep
-                const isCompleted = index < currentStep
-
-                return (
+            {/* Terminal body */}
+            <div className="bg-[#0d1117] rounded-b-lg border border-[#30363d] p-6 min-h-[400px]">
+              {/* Code display */}
+              <div className="space-y-2 mb-8">
+                {codeLines.map((line, index) => (
                   <motion.div
                     key={index}
-                    initial={{ y: 50, opacity: 0, rotateX: -90 }}
-                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    transition={{ delay: index * 0.1, type: 'spring' }}
-                    className={`relative flex flex-col items-center gap-2 p-3 rounded-xl backdrop-blur-sm transition-all ${
-                      isActive
-                        ? 'bg-white/20 scale-110 shadow-2xl shadow-white/20 z-10'
-                        : isCompleted
-                        ? 'bg-white/10 opacity-60'
-                        : 'bg-white/5 opacity-30'
-                    }`}
-                    style={{
-                      transformStyle: 'preserve-3d',
-                      transform: isActive ? 'translateZ(30px)' : 'translateZ(0)'
-                    }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`flex items-center gap-3 ${index === currentLine ? 'bg-[#161b22] -mx-2 px-2 py-1 rounded' : ''}`}
                   >
-                    <motion.div
-                      animate={isActive ? { rotate: 360, scale: [1, 1.2, 1] } : {}}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
-                      className={`flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br ${step.color} shadow-lg`}
-                    >
-                      <Icon className="text-white text-lg" />
-                    </motion.div>
-                    <span className="text-white text-xs font-medium text-center">{step.text}</span>
-                    {isCompleted && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center"
+                    <span className="text-gray-500 w-8 text-right">{index + 1}</span>
+                    <span className="text-gray-400">{line}</span>
+                    {index === currentLine && (
+                      <motion.span
+                        animate={{ opacity: [1, 0, 1] }}
+                        transition={{ duration: 0.8, repeat: Infinity }}
+                        className="text-green-400 ml-2"
                       >
-                        <FaCheck className="text-white text-xs" />
-                      </motion.div>
+                        ▌
+                      </motion.span>
                     )}
                   </motion.div>
-                )
-              })}
-            </div>
+                ))}
+              </div>
 
-            {/* Circular Progress Ring */}
-            <div className="relative flex justify-center mb-6">
-              <svg className="w-32 h-32 transform -rotate-90">
-                <circle
-                  cx="64"
-                  cy="64"
-                  r="56"
-                  stroke="rgba(255,255,255,0.1)"
-                  strokeWidth="8"
-                  fill="none"
-                />
-                <motion.circle
-                  cx="64"
-                  cy="64"
-                  r="56"
-                  stroke="url(#gradient)"
-                  strokeWidth="8"
-                  fill="none"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: progress / 100 }}
-                  transition={{ duration: 0.1 }}
-                  style={{
-                    filter: 'drop-shadow(0 0 10px rgba(168, 85, 247, 0.5))'
-                  }}
-                />
-                <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#3b82f6" />
-                    <stop offset="50%" stopColor="#a855f7" />
-                    <stop offset="100%" stopColor="#ec4899" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.span
-                  className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                >
-                  {Math.round(progress)}
-                </motion.span>
+              {/* Loading indicators */}
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                {/* File tree */}
+                <div className="bg-[#161b22] rounded-lg p-4 border border-[#30363d]">
+                  <div className="text-blue-400 text-xs mb-3 font-semibold">📁 src</div>
+                  <div className="space-y-1 text-xs">
+                    <div className="text-gray-400 flex items-center gap-2">
+                      <span>📄</span> App.jsx
+                    </div>
+                    <div className="text-gray-400 flex items-center gap-2">
+                      <span>📄</span> index.css
+                    </div>
+                    <div className="text-gray-400 flex items-center gap-2">
+                      <span>📁</span> components
+                    </div>
+                    <div className="text-gray-400 flex items-center gap-2 pl-4">
+                      <span>📄</span> Preloader.jsx
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dependencies */}
+                <div className="bg-[#161b22] rounded-lg p-4 border border-[#30363d]">
+                  <div className="text-purple-400 text-xs mb-3 font-semibold">📦 Installing</div>
+                  <div className="space-y-2 text-xs">
+                    <div className="flex items-center gap-2">
+                      <span className="text-green-400">✓</span> react
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-green-400">✓</span> framer-motion
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-yellow-400 animate-pulse">⟳</span> tailwindcss
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-gray-500">○</span> react-icons
+                    </div>
+                  </div>
+                </div>
+
+                {/* Git status */}
+                <div className="bg-[#161b22] rounded-lg p-4 border border-[#30363d]">
+                  <div className="text-orange-400 text-xs mb-3 font-semibold">🔀 Git Status</div>
+                  <div className="space-y-1 text-xs">
+                    <div className="text-green-400">On branch main</div>
+                    <div className="text-gray-400">Changes to be committed:</div>
+                    <div className="text-gray-400 pl-2">new file: Preloader.jsx</div>
+                    <div className="text-gray-400 pl-2">modified: App.jsx</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Progress bar */}
+              <div className="bg-[#161b22] rounded-lg p-4 border border-[#30363d]">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-gray-400 text-xs">Building portfolio...</span>
+                  <span className="text-green-400 text-xs font-bold">{Math.round(progress)}%</span>
+                </div>
+                <div className="relative h-2 bg-[#0d1117] rounded-full overflow-hidden">
+                  <motion.div
+                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${progress}%` }}
+                    transition={{ duration: 0.1 }}
+                  />
+                </div>
+                <div className="mt-2 text-xs text-gray-500">
+                  <motion.span
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    npm run build
+                  </motion.span>
+                </div>
               </div>
             </div>
 
-            {/* Linear Progress Bar */}
-            <div className="relative h-2 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
-              <motion.div
-                className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"
-                initial={{ width: 0 }}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.1 }}
-                style={{
-                  boxShadow: '0 0 30px rgba(168, 85, 247, 0.6)'
-                }}
-              />
-              <motion.div
-                className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-white/50 to-transparent"
-                animate={{ x: ['-100%', '200%'] }}
-                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-              />
+            {/* Terminal footer */}
+            <div className="bg-[#161b22] rounded-b-lg border-t border-[#30363d] px-4 py-2 flex items-center justify-between">
+              <div className="flex items-center gap-2 text-xs">
+                <span className="text-green-400">➜</span>
+                <span className="text-gray-400">~/portfolio</span>
+              </div>
+              <div className="flex items-center gap-4 text-xs text-gray-500">
+                <span>UTF-8</span>
+                <span>JavaScript</span>
+                <span>React</span>
+              </div>
             </div>
-          </motion.div>
+          </div>
+
+          {/* Floating code symbols */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {['{ }', '< />', '[]', '()', '=>', '&&', '||', '...'].map((symbol, i) => (
+              <motion.div
+                key={i}
+                className="absolute text-gray-600/20 text-4xl font-bold"
+                initial={{
+                  x: Math.random() * 100 + '%',
+                  y: Math.random() * 100 + '%',
+                  rotate: Math.random() * 360,
+                  scale: 0
+                }}
+                animate={{
+                  rotate: 360,
+                  scale: [0, 1, 0],
+                  opacity: [0, 0.3, 0]
+                }}
+                transition={{
+                  duration: 5 + Math.random() * 3,
+                  repeat: Infinity,
+                  delay: Math.random() * 2
+                }}
+              >
+                {symbol}
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
