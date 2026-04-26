@@ -4,6 +4,7 @@ import AnimatedBackground from './components/AnimatedBackground'
 import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
 import { ThemeToggle } from './components/ThemeToggle'
+import { Preloader } from './components/Preloader'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Hero from './sections/Hero'
 import About from './sections/About'
@@ -26,9 +27,16 @@ function ProgressBar() {
 }
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  const handlePreloaderComplete = () => {
+    setIsLoading(false)
+  }
+
   return (
     <ThemeProvider>
-      <div className="relative min-h-screen font-body text-brand-900">
+      <Preloader onComplete={handlePreloaderComplete} />
+      <div className={`relative min-h-screen font-body text-brand-900 transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <AnimatedBackground />
         <ProgressBar />
         <Sidebar />
