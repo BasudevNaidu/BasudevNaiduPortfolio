@@ -6,7 +6,6 @@ import Footer from './components/Footer'
 import { ThemeToggle } from './components/ThemeToggle'
 import { Preloader } from './components/Preloader'
 import ScrollToTop from './components/ScrollToTop'
-import { HeroSkeleton, SectionSkeleton } from './components/Skeleton'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Hero from './sections/Hero'
 import About from './sections/About'
@@ -30,14 +29,9 @@ function ProgressBar() {
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true)
-  const [showSkeleton, setShowSkeleton] = useState(true)
 
   const handlePreloaderComplete = () => {
     setIsLoading(false)
-    // Show skeleton for 1.5 seconds after preloader
-    setTimeout(() => {
-      setShowSkeleton(false)
-    }, 1500)
   }
 
   return (
@@ -50,31 +44,14 @@ export default function App() {
         <ThemeToggle />
 
         <main>
-          {showSkeleton ? (
-            <>
-              <HeroSkeleton />
-              <div className="px-6 py-28 sm:pl-28 sm:pr-10">
-                <SectionSkeleton />
-                <SectionSkeleton />
-                <SectionSkeleton />
-                <SectionSkeleton />
-                <SectionSkeleton />
-                <SectionSkeleton />
-                <SectionSkeleton />
-              </div>
-            </>
-          ) : (
-            <>
-              <Hero />
-              <About />
-              <Education />
-              <Skills />
-              <Projects />
-              <Coding />
-              <Certifications />
-              <Contact />
-            </>
-          )}
+          <Hero />
+          <About />
+          <Education />
+          <Skills />
+          <Projects />
+          <Coding />
+          <Certifications />
+          <Contact />
         </main>
 
         <Footer />
