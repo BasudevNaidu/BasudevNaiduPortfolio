@@ -142,12 +142,12 @@ export default function Footer() {
             </motion.span>{' '}
             and lots of coffee.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col items-center gap-2">
             <a
               href="https://github.com/BasudevNaidu/BasudevNaiduPortfolio/blob/main/LICENSE"
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-xs font-semibold bg-gradient-to-r from-brand-500 to-accent-pink bg-clip-text text-transparent hover:opacity-80 transition"
+              className="font-mono text-lg font-extrabold bg-gradient-to-r from-red-900 via-red-800 to-red-700 bg-clip-text text-transparent hover:opacity-80 transition shadow-glow"
             >
               View MIT License
             </a>
