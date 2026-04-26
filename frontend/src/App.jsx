@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
 import { ThemeToggle } from './components/ThemeToggle'
 import { Preloader } from './components/Preloader'
+import ScrollToTop from './components/ScrollToTop'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Hero from './sections/Hero'
 import About from './sections/About'
@@ -54,6 +55,7 @@ export default function App() {
         </main>
 
         <Footer />
+        <ScrollToTop />
       </div>
     </ThemeProvider>
   )
