@@ -65,7 +65,7 @@ export const EDUCATION = [
     school: 'K L E F Deemed To Be University',
     period: '2023 - 2027',
     place: 'Vijayawada, Andhra Pradesh, India',
-    gpa: 'GPA: 9.07/10',
+    gpa: 'CGPA: 9.07/10',
     logo: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/kl-university-guntur-india.webp?updatedAt=1776779337331',
   },
   {
@@ -73,7 +73,7 @@ export const EDUCATION = [
     school: 'St. Xavier High School (CBSE)',
     period: '2021 - 2023',
     place: 'Berhampur, Odisha, India',
-    gpa: 'GPA: 8.1/10',
+    gpa: 'CGPA: 8.1/10',
     logo: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/St-Xaviers-High-School-Ambapua-Berhampur-Logo.webp',
   },
   {
@@ -81,7 +81,7 @@ export const EDUCATION = [
     school: 'Sunabeda Public School (ICSE)',
     period: '2020 - 2021',
     place: 'Sunabeda, Odisha, India',
-    gpa: 'GPA: 9.16/10',
+    gpa: 'CGPA: 9.16/10',
     logo: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/sunabeda-public-school.png',
   },
 ]

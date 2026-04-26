@@ -161,7 +161,7 @@ export default function Hero() {
             className="mt-10 grid max-w-md grid-cols-3 divide-x divide-brand-100 rounded-2xl bg-white/60 p-4 shadow-soft backdrop-blur"
           >
             {[
-              ['9.07', 'GPA'],
+              ['9.07', 'CGPA'],
               ['7+', 'Projects'],
               ['5+', 'Certs'],
             ].map(([n, l]) => (
