@@ -8,6 +8,10 @@ export const Preloader = ({ onComplete }) => {
   const [terminalOutput, setTerminalOutput] = useState([])
   const [hexStream, setHexStream] = useState([])
   const [networkPackets, setNetworkPackets] = useState([])
+  const [fileSystem, setFileSystem] = useState([])
+  const [processList, setProcessList] = useState([])
+  const [sqlQueries, setSqlQueries] = useState([])
+  const [systemLogs, setSystemLogs] = useState([])
 
   const hackLines = [
     '> INITIALIZING ZERO-DAY EXPLOIT...',
@@ -46,6 +50,50 @@ export const Preloader = ({ onComplete }) => {
     '172.16.0.23',
     '45.33.32.156',
     '203.0.113.42'
+  ]
+
+  const fileNames = [
+    '/etc/passwd',
+    '/etc/shadow',
+    '/var/log/auth.log',
+    '/root/.ssh/id_rsa',
+    '/home/user/documents/secret.txt',
+    '/etc/hosts',
+    '/var/www/html/config.php',
+    '/tmp/backdoor.sh'
+  ]
+
+  const processNames = [
+    'exploit.exe',
+    'keylogger.exe',
+    'backdoor_daemon',
+    'packet_sniffer',
+    'brute_force.py',
+    'injector.sh',
+    'rootkit.ko',
+    'malware_svc'
+  ]
+
+  const sqlCommands = [
+    "SELECT * FROM users WHERE id=1 OR 1=1--",
+    "DROP TABLE users--",
+    "INSERT INTO admin VALUES ('hacker', 'password')",
+    "UPDATE users SET password='pwned' WHERE id=1",
+    "UNION SELECT username, password FROM admin--",
+    "'; EXEC xp_cmdshell('dir')--",
+    "1' AND 1=1 UNION SELECT NULL, NULL, NULL--",
+    "LOAD_FILE('/etc/passwd')"
+  ]
+
+  const logMessages = [
+    '[INFO] Connection established from 192.168.1.100',
+    '[WARN] Unusual activity detected on port 443',
+    '[ERROR] Authentication failed for user admin',
+    '[INFO] File system access granted',
+    '[WARN] Firewall rules modified',
+    '[ERROR] Database connection timeout',
+    '[INFO] Privilege escalation successful',
+    '[CRITICAL] System compromise detected'
   ]
 
   useEffect(() => {
@@ -104,12 +152,65 @@ export const Preloader = ({ onComplete }) => {
       })
     }, 250)
 
+    const fileTimer = setInterval(() => {
+      setFileSystem(prev => {
+        const newFile = {
+          name: fileNames[Math.floor(Math.random() * fileNames.length)],
+          size: Math.floor(Math.random() * 1024 * 1024) + 1024,
+          permissions: Math.random() > 0.5 ? 'rwxr-xr-x' : 'rw-r--r--'
+        }
+        if (prev.length > 6) {
+          return [...prev.slice(1), newFile]
+        }
+        return [...prev, newFile]
+      })
+    }, 180)
+
+    const processTimer = setInterval(() => {
+      setProcessList(prev => {
+        const newProcess = {
+          name: processNames[Math.floor(Math.random() * processNames.length)],
+          pid: Math.floor(Math.random() * 9999) + 1000,
+          cpu: (Math.random() * 100).toFixed(1),
+          mem: (Math.random() * 100).toFixed(1)
+        }
+        if (prev.length > 6) {
+          return [...prev.slice(1), newProcess]
+        }
+        return [...prev, newProcess]
+      })
+    }, 220)
+
+    const sqlTimer = setInterval(() => {
+      setSqlQueries(prev => {
+        const newQuery = sqlCommands[Math.floor(Math.random() * sqlCommands.length)]
+        if (prev.length > 5) {
+          return [...prev.slice(1), newQuery]
+        }
+        return [...prev, newQuery]
+      })
+    }, 190)
+
+    const logTimer = setInterval(() => {
+      setSystemLogs(prev => {
+        const newLog = logMessages[Math.floor(Math.random() * logMessages.length)]
+        if (prev.length > 7) {
+          return [...prev.slice(1), newLog]
+        }
+        return [...prev, newLog]
+      })
+    }, 160)
+
     return () => {
       clearInterval(timer)
       clearInterval(lineTimer)
       clearInterval(outputTimer)
       clearInterval(hexTimer)
       clearInterval(packetTimer)
+      clearInterval(fileTimer)
+      clearInterval(processTimer)
+      clearInterval(sqlTimer)
+      clearInterval(logTimer)
     }
   }, [])
 
@@ -163,7 +264,7 @@ export const Preloader = ({ onComplete }) => {
           </div>
 
           {/* Multiple terminal windows */}
-          <div className="relative z-10 w-full max-w-6xl mx-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="relative z-10 w-full max-w-7xl mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
             {/* Main terminal */}
             <div className="bg-black border-2 border-green-500 rounded-lg overflow-hidden shadow-2xl shadow-green-500/50">
               <div className="bg-green-900/40 px-3 py-2 flex items-center justify-between border-b border-green-500">
@@ -314,6 +415,137 @@ export const Preloader = ({ onComplete }) => {
                     <div className="text-red-400">
                       <span className="animate-pulse">●</span> SYSTEM: COMPROMISED
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* File system terminal */}
+            <div className="bg-black border-2 border-purple-500 rounded-lg overflow-hidden shadow-2xl shadow-purple-500/50">
+              <div className="bg-purple-900/40 px-3 py-2 flex items-center justify-between border-b border-purple-500">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                </div>
+                <span className="text-purple-400 text-xs font-bold">root@darknet:~# ls -la</span>
+              </div>
+              <div className="p-4">
+                <div className="text-purple-400 text-xs mb-2" style={{ textShadow: '0 0 10px #a855f7' }}>
+                  FILE SYSTEM - COMPROMISED
+                </div>
+                <div className="bg-purple-900/20 border border-purple-500/50 rounded p-3 h-40 overflow-hidden">
+                  <div className="space-y-1">
+                    {fileSystem.map((file, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-purple-400 text-xs font-mono"
+                        style={{ textShadow: '0 0 5px rgba(168, 85, 247, 0.7)' }}
+                      >
+                        <span className="text-purple-600 mr-2">{file.permissions}</span>
+                        {file.name} <span className="text-purple-500">({(file.size / 1024).toFixed(1)}KB)</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Process list terminal */}
+            <div className="bg-black border-2 border-orange-500 rounded-lg overflow-hidden shadow-2xl shadow-orange-500/50">
+              <div className="bg-orange-900/40 px-3 py-2 flex items-center justify-between border-b border-orange-500">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                </div>
+                <span className="text-orange-400 text-xs font-bold">root@darknet:~# top</span>
+              </div>
+              <div className="p-4">
+                <div className="text-orange-400 text-xs mb-2" style={{ textShadow: '0 0 10px #f97316' }}>
+                  RUNNING PROCESSES
+                </div>
+                <div className="bg-orange-900/20 border border-orange-500/50 rounded p-3 h-40 overflow-hidden">
+                  <div className="space-y-1">
+                    {processList.map((proc, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-orange-400 text-xs font-mono"
+                        style={{ textShadow: '0 0 5px rgba(249, 115, 22, 0.7)' }}
+                      >
+                        <span className="text-orange-600 mr-2">[{proc.pid}]</span>
+                        {proc.name} <span className="text-orange-500">CPU:{proc.cpu}% MEM:{proc.mem}%</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* SQL injection terminal */}
+            <div className="bg-black border-2 border-pink-500 rounded-lg overflow-hidden shadow-2xl shadow-pink-500/50">
+              <div className="bg-pink-900/40 px-3 py-2 flex items-center justify-between border-b border-pink-500">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                </div>
+                <span className="text-pink-400 text-xs font-bold">root@darknet:~# mysql</span>
+              </div>
+              <div className="p-4">
+                <div className="text-pink-400 text-xs mb-2" style={{ textShadow: '0 0 10px #ec4899' }}>
+                  SQL INJECTION ATTACKS
+                </div>
+                <div className="bg-pink-900/20 border border-pink-500/50 rounded p-3 h-40 overflow-hidden">
+                  <div className="space-y-1">
+                    {sqlQueries.map((query, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-pink-400 text-xs font-mono truncate"
+                        style={{ textShadow: '0 0 5px rgba(236, 72, 153, 0.7)' }}
+                      >
+                        <span className="text-pink-600 mr-2">SQL[{index + 1}]</span>
+                        {query}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* System logs terminal */}
+            <div className="bg-black border-2 border-indigo-500 rounded-lg overflow-hidden shadow-2xl shadow-indigo-500/50">
+              <div className="bg-indigo-900/40 px-3 py-2 flex items-center justify-between border-b border-indigo-500">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                </div>
+                <span className="text-indigo-400 text-xs font-bold">root@darknet:~# journalctl</span>
+              </div>
+              <div className="p-4">
+                <div className="text-indigo-400 text-xs mb-2" style={{ textShadow: '0 0 10px #6366f1' }}>
+                  SYSTEM LOGS - LIVE
+                </div>
+                <div className="bg-indigo-900/20 border border-indigo-500/50 rounded p-3 h-40 overflow-hidden">
+                  <div className="space-y-1">
+                    {systemLogs.map((log, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-indigo-400 text-xs font-mono"
+                        style={{ textShadow: '0 0 5px rgba(99, 102, 241, 0.7)' }}
+                      >
+                        {log}
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
               </div>
