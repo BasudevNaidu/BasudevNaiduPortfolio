@@ -173,6 +173,7 @@ export const PROJECTS = [
   { name: 'Fitrack', tag: 'Fitness Tracker', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/fitrack.mp4?updatedAt=1776875767565', github: 'https://github.com/BasudevNaidu/Fitrack', live: 'https://fitrack-flame.vercel.app/' },
   { name: 'Hostel Management', tag: 'College Utility', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/hostel-management.mp4?updatedAt=1776876078841', github: 'https://github.com/BasudevNaidu/Hostel-Management', live: 'https://hostel-management-jade-two.vercel.app/homePage/' },
   { name: 'VasuFlicks - OTT Platform', tag: 'Streaming App', video: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/videos/vasuflicks.mp4?updatedAt=1776875955907', github: 'https://github.com/BasudevNaidu/VasFlicks---OTT-Platform', live: 'https://vas-flicks-ott-platform.vercel.app/' },
+  { name: 'Bana AI', tag: 'AI Assistant', video: null, github: 'coming soon', live: 'coming soon' },
 ]
 
 export const CODING_PROFILES = [

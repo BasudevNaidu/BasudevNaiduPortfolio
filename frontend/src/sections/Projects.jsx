@@ -175,7 +175,7 @@ function Placeholder({ grad, name }) {
           {name}
         </span>
         <span className="text-[10px] uppercase tracking-[0.3em] text-white/80">
-          video coming soon
+          {name === 'Bana AI' ? 'Bana AI coming soon' : 'video coming soon'}
         </span>
       </motion.div>
     </div>
@@ -258,17 +258,39 @@ export default function Projects() {
                     </h3>
 
                     <div className="mt-4 flex items-center gap-2 px-1">
-                      <motion.a
-                        href={p.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.06 }}
-                        whileTap={{ scale: 0.96 }}
-                        className="inline-flex items-center gap-2 rounded-full bg-brand-900 px-4 py-2 text-xs font-semibold text-white transition hover:bg-brand-700"
-                      >
-                        <FaGithub /> Code
-                      </motion.a>
-                      {p.live ? (
+                      {p.github === 'coming soon' ? (
+                        <motion.button
+                          type="button"
+                          whileHover={{ scale: 1.06 }}
+                          whileTap={{ scale: 0.96 }}
+                          className="inline-flex items-center gap-2 rounded-full bg-brand-900 px-4 py-2 text-xs font-semibold text-white/50 transition cursor-not-allowed"
+                          disabled
+                        >
+                          <FaGithub /> Coming Soon
+                        </motion.button>
+                      ) : (
+                        <motion.a
+                          href={p.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.06 }}
+                          whileTap={{ scale: 0.96 }}
+                          className="inline-flex items-center gap-2 rounded-full bg-brand-900 px-4 py-2 text-xs font-semibold text-white transition hover:bg-brand-700"
+                        >
+                          <FaGithub /> Code
+                        </motion.a>
+                      )}
+                      {p.live === 'coming soon' ? (
+                        <motion.button
+                          type="button"
+                          whileHover={{ scale: 1.06 }}
+                          whileTap={{ scale: 0.96 }}
+                          className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-xs font-semibold text-brand-700/50 transition cursor-not-allowed"
+                          disabled
+                        >
+                          <FaExternalLinkAlt /> Coming Soon
+                        </motion.button>
+                      ) : p.live ? (
                         <motion.a
                           href={p.live}
                           target="_blank"
