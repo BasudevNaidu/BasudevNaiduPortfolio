@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaRobot, FaTimes, FaMagic, FaBrain, FaLightbulb, FaCode, FaImage } from 'react-icons/fa'
+import { FaRobot, FaTimes, FaMagic, FaBrain, FaLightbulb, FaCode, FaImage, FaSpinner } from 'react-icons/fa'
+import { sendChatMessage, generateIdea } from '../services/aiService'
 
 export default function AIButton() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('chat')
+  const [chatInput, setChatInput] = useState('')
+  const [chatMessages, setChatMessages] = useState([
+    { role: 'assistant', content: '👋 Hi! I\'m your AI assistant. Ask me anything or try the other tools!' }
+  ])
+  const [isChatLoading, setIsChatLoading] = useState(false)
+  const [ideaLoading, setIdeaLoading] = useState(null)
+  const [ideaResult, setIdeaResult] = useState(null)
 
   const tools = [
     { id: 'chat', icon: FaRobot, label: 'AI Chat', color: 'from-brand-500 to-accent-pink' },
@@ -13,6 +21,41 @@ export default function AIButton() {
     { id: 'code', icon: FaCode, label: 'Code Gen', color: 'from-brand-400 to-accent-mint' },
     { id: 'image', icon: FaImage, label: 'AI Art', color: 'from-accent-peach to-brand-500' },
   ]
+
+  const handleSendMessage = async () => {
+    if (!chatInput.trim()) return
+
+    const userMessage = { role: 'user', content: chatInput }
+    setChatMessages(prev => [...prev, userMessage])
+    setChatInput('')
+    setIsChatLoading(true)
+
+    try {
+      const messages = chatMessages.map(m => ({ role: m.role, content: m.content }))
+      messages.push(userMessage)
+      
+      const response = await sendChatMessage(messages)
+      setChatMessages(prev => [...prev, { role: 'assistant', content: response }])
+    } catch (error) {
+      setChatMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, something went wrong. Please try again.' }])
+    } finally {
+      setIsChatLoading(false)
+    }
+  }
+
+  const handleGenerateIdea = async (type) => {
+    setIdeaLoading(type)
+    setIdeaResult(null)
+
+    try {
+      const idea = await generateIdea(type)
+      setIdeaResult(idea)
+    } catch (error) {
+      setIdeaResult('Sorry, something went wrong. Please try again.')
+    } finally {
+      setIdeaLoading(null)
+    }
+  }
 
   return (
     <>
@@ -113,23 +156,46 @@ export default function AIButton() {
               <div className="p-4">
                 {activeTab === 'chat' && (
                   <div className="space-y-3">
-                    <div className="rounded-xl bg-brand-50 p-4">
-                      <p className="text-sm text-brand-700">
-                        👋 Hi! I'm your AI assistant. Ask me anything or try the other tools!
-                      </p>
+                    <div className="max-h-48 overflow-y-auto space-y-2">
+                      {chatMessages.map((msg, i) => (
+                        <div
+                          key={i}
+                          className={`rounded-xl p-3 ${
+                            msg.role === 'user'
+                              ? 'bg-brand-500 text-white ml-8'
+                              : 'bg-brand-50 text-brand-700 mr-8'
+                          }`}
+                        >
+                          <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                        </div>
+                      ))}
+                      {isChatLoading && (
+                        <div className="rounded-xl bg-brand-50 p-3 mr-8">
+                          <div className="flex items-center gap-2 text-brand-700">
+                            <FaSpinner className="animate-spin" />
+                            <span className="text-sm">Thinking...</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
                     <div className="flex gap-2">
                       <input
                         type="text"
+                        value={chatInput}
+                        onChange={(e) => setChatInput(e.target.value)}
+                        onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                         placeholder="Ask me anything..."
                         className="flex-1 rounded-full border border-brand-200 px-4 py-2 text-sm focus:outline-none focus:border-brand-500"
+                        disabled={isChatLoading}
                       />
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="rounded-full bg-gradient-to-r from-brand-500 to-accent-pink px-4 py-2 text-white text-sm font-medium"
+                        onClick={handleSendMessage}
+                        disabled={isChatLoading}
+                        className="rounded-full bg-gradient-to-r from-brand-500 to-accent-pink px-4 py-2 text-white text-sm font-medium disabled:opacity-50"
                       >
-                        Send
+                        {isChatLoading ? <FaSpinner className="animate-spin" /> : 'Send'}
                       </motion.button>
                     </div>
                   </div>
@@ -161,10 +227,12 @@ export default function AIButton() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full rounded-xl bg-gradient-to-r from-accent-sky to-brand-400 p-4 text-white text-left"
+                      onClick={() => handleGenerateIdea('random')}
+                      disabled={ideaLoading === 'random'}
+                      className="w-full rounded-xl bg-gradient-to-r from-accent-sky to-brand-400 p-4 text-white text-left disabled:opacity-50"
                     >
                       <div className="flex items-center gap-2 mb-1">
-                        <FaLightbulb className="text-yellow-300" />
+                        {ideaLoading === 'random' ? <FaSpinner className="animate-spin" /> : <FaLightbulb className="text-yellow-300" />}
                         <span className="font-medium">Random Idea</span>
                       </div>
                       <p className="text-xs opacity-90">Get a creative project idea</p>
@@ -172,14 +240,25 @@ export default function AIButton() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full rounded-xl bg-gradient-to-r from-accent-pink to-accent-peach p-4 text-white text-left"
+                      onClick={() => handleGenerateIdea('feature')}
+                      disabled={ideaLoading === 'feature'}
+                      className="w-full rounded-xl bg-gradient-to-r from-accent-pink to-accent-peach p-4 text-white text-left disabled:opacity-50"
                     >
                       <div className="flex items-center gap-2 mb-1">
-                        <FaMagic className="text-white" />
+                        {ideaLoading === 'feature' ? <FaSpinner className="animate-spin" /> : <FaMagic className="text-white" />}
                         <span className="font-medium">Feature Suggestion</span>
                       </div>
                       <p className="text-xs opacity-90">Get feature ideas for your projects</p>
                     </motion.button>
+                    {ideaResult && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="rounded-xl bg-brand-50 p-4 text-sm text-brand-700 whitespace-pre-wrap"
+                      >
+                        {ideaResult}
+                      </motion.div>
+                    )}
                   </div>
                 )}
 

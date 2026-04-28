@@ -10,11 +10,12 @@ A modern, responsive portfolio website showcasing my skills, projects, and journ
 - **Dark/Light Mode**: Toggle between dark and light themes
 - **Smooth Scrolling**: Enhanced navigation experience with smooth scroll behavior
 - **Scroll-to-Top Button**: Floating button for easy navigation
-- **Loading Skeletons**: Skeleton loaders for improved perceived performance
-- **SEO Optimized**: Comprehensive meta tags for better search engine visibility
+- **AI Assistant**: Interactive AI chat and ideas generation powered by Groq
 - **Contact Form**: Functional contact form with EmailJS integration
 - **Social Links**: Links to LinkedIn, Instagram, Telegram, and email
 - **MIT License**: Open source under MIT License
+- **Loading Skeletons**: Skeleton loaders for improved perceived performance
+- **SEO Optimized**: Comprehensive meta tags for better search engine visibility
 
 ## 🛠️ Tech Stack
 
@@ -23,6 +24,7 @@ A modern, responsive portfolio website showcasing my skills, projects, and journ
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **Icons**: React Icons
+- **AI Service**: Groq API
 - **Email Service**: EmailJS
 - **Git**: Version control
 
@@ -48,17 +50,33 @@ cd frontend
 npm install
 ```
 
-5. Start the development server:
+5. Create a `.env` file in the frontend directory with your Groq API key:
+```bash
+VITE_GROQ_API_KEY=your_groq_api_key_here
+```
+
+6. Start the development server:
 ```bash
 npm run dev
 ```
 
-6. Open your browser and visit:
+7. Open your browser and visit:
 ```
 http://localhost:5173
 ```
 
-## � EmailJS Configuration
+## 🔑 Groq API Configuration
+
+The AI assistant uses Groq API for chat and ideas generation. To configure it:
+
+1. Sign up at [Groq Console](https://console.groq.com/)
+2. Create a new API key
+3. Add the API key to `frontend/.env`:
+   ```
+   VITE_GROQ_API_KEY=your_groq_api_key_here
+   ```
+
+## 📧 EmailJS Configuration
 
 The contact form uses EmailJS for sending emails. To configure it for your use:
 
@@ -72,7 +90,7 @@ The contact form uses EmailJS for sending emails. To configure it for your use:
    - Replace `WX5kjfvooAFMo2YWH` with your Public Key
    - Update `to_email` with your email address
 
-## �📝 Project Structure
+## 📝 Project Structure
 
 ```
 BasudevNaiduPortfolio/
@@ -81,6 +99,7 @@ BasudevNaiduPortfolio/
 │   │   ├── components/
 │   │   ├── sections/
 │   │   ├── contexts/
+│   │   ├── services/
 │   │   └── data/
 │   ├── index.html
 │   └── package.json
