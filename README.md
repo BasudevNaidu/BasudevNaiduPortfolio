@@ -10,7 +10,7 @@ A modern, responsive portfolio website showcasing my skills, projects, and journ
 - **Dark/Light Mode**: Toggle between dark and light themes
 - **Smooth Scrolling**: Enhanced navigation experience with smooth scroll behavior
 - **Scroll-to-Top Button**: Floating button for easy navigation
-- **AI Assistant**: Interactive AI chat and ideas generation powered by Groq
+- **AI Assistant**: Interactive AI chat and ideas generation
 - **Contact Form**: Functional contact form with EmailJS integration
 - **Social Links**: Links to LinkedIn, Instagram, Telegram, and email
 - **MIT License**: Open source under MIT License
@@ -24,7 +24,7 @@ A modern, responsive portfolio website showcasing my skills, projects, and journ
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **Icons**: React Icons
-- **AI Service**: Groq API
+- **AI Service**: Compatible with OpenAI, Gemini, and other AI APIs
 - **Email Service**: EmailJS
 - **Git**: Version control
 
@@ -50,9 +50,9 @@ cd frontend
 npm install
 ```
 
-5. Create a `.env` file in the frontend directory with your Groq API key:
+5. Create a `.env` file in the frontend directory with your AI API key (OpenAI, Gemini, etc.):
 ```bash
-VITE_GROQ_API_KEY=your_groq_api_key_here
+VITE_AI_API_KEY=your_ai_api_key_here
 ```
 
 6. Start the development server:
@@ -65,16 +65,17 @@ npm run dev
 http://localhost:5173
 ```
 
-## 🔑 Groq API Configuration
+## 🔑 AI API Configuration
 
-The AI assistant uses Groq API for chat and ideas generation. To configure it:
+The AI assistant supports various AI providers (OpenAI, Gemini, Groq, etc.) for chat and ideas generation. To configure it:
 
-1. Sign up at [Groq Console](https://console.groq.com/)
+1. Sign up for your preferred AI provider (OpenAI, Google Gemini, etc.)
 2. Create a new API key
 3. Add the API key to `frontend/.env`:
    ```
-   VITE_GROQ_API_KEY=your_groq_api_key_here
+   VITE_AI_API_KEY=your_ai_api_key_here
    ```
+4. Update the API endpoint in `frontend/src/services/aiService.js` if needed for your chosen provider
 
 ## 📧 EmailJS Configuration
 
