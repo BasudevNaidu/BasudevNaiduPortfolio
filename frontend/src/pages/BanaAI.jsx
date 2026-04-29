@@ -14,7 +14,7 @@ export default function BanaAI() {
   const [isChatLoading, setIsChatLoading] = useState(false)
   const [ideaLoading, setIdeaLoading] = useState(null)
   const [ideaResult, setIdeaResult] = useState(null)
-  const [modalSize, setModalSize] = useState({ width: 500, height: 600 })
+  const [modalSize, setModalSize] = useState({ width: 750, height: 600 })
   const [isExpanded, setIsExpanded] = useState(false)
 
   const tools = [
@@ -177,10 +177,11 @@ export default function BanaAI() {
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 flex flex-col overflow-hidden">
             {activeTab === 'chat' && (
-              <div className="flex flex-col h-full space-y-4">
-                <div className="flex-1 overflow-y-auto space-y-3 min-h-[300px]">
+              <>
+                {/* Messages — scrollable */}
+                <div className="flex-1 overflow-y-auto p-6 space-y-3">
                   {chatMessages.map((msg, i) => (
                     <motion.div
                       key={i}
@@ -208,7 +209,9 @@ export default function BanaAI() {
                     </motion.div>
                   )}
                 </div>
-                <div className="flex gap-3 pt-4 border-t border-brand-100/60 flex-shrink-0">
+
+                {/* Input — always pinned at bottom */}
+                <div className="flex gap-3 px-6 py-4 border-t border-brand-100/60 flex-shrink-0 bg-white/80 backdrop-blur">
                   <input
                     type="text"
                     value={chatInput}
@@ -228,113 +231,119 @@ export default function BanaAI() {
                     {isChatLoading ? <FaSpinner className="animate-spin" /> : 'Send'}
                   </motion.button>
                 </div>
-              </div>
+              </>
             )}
 
-            {activeTab === 'magic' && (
-              <div className="space-y-4">
-                <textarea
-                  placeholder="Enter text to transform..."
-                  className="w-full rounded-2xl border-2 border-brand-200 p-4 text-sm focus:outline-none focus:border-brand-500 resize-none h-40 transition"
-                />
-                <div className="flex gap-3 flex-wrap">
-                  {['Summarize', 'Expand', 'Rewrite', 'Translate'].map((action) => (
+            {/* Other tabs — scrollable content */}
+            {activeTab !== 'chat' && (
+              <div className="flex-1 overflow-y-auto p-6">
+                {activeTab === 'magic' && (
+                  <div className="space-y-4">
+                    <textarea
+                      placeholder="Enter text to transform..."
+                      className="w-full rounded-2xl border-2 border-brand-200 p-4 text-sm focus:outline-none focus:border-brand-500 resize-none h-40 transition"
+                    />
+                    <div className="flex gap-3 flex-wrap">
+                      {['Summarize', 'Expand', 'Rewrite', 'Translate'].map((action) => (
+                        <motion.button
+                          key={action}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="rounded-full bg-brand-100 px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-200 transition"
+                        >
+                          {action}
+                        </motion.button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === 'brain' && (
+                  <div className="space-y-4">
                     <motion.button
-                      key={action}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="rounded-full bg-brand-100 px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-200 transition"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleGenerateIdea('random')}
+                      disabled={ideaLoading === 'random'}
+                      className="w-full rounded-2xl bg-gradient-to-r from-accent-sky to-brand-400 p-6 text-white text-left disabled:opacity-50 shadow-lg"
                     >
-                      {action}
+                      <div className="flex items-center gap-3 mb-2">
+                        {ideaLoading === 'random' ? <FaSpinner className="animate-spin" /> : <FaLightbulb className="text-yellow-300" />}
+                        <span className="font-semibold text-lg">Random Idea</span>
+                      </div>
+                      <p className="text-sm opacity-90">Get a creative project idea</p>
                     </motion.button>
-                  ))}
-                </div>
-              </div>
-            )}
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleGenerateIdea('feature')}
+                      disabled={ideaLoading === 'feature'}
+                      className="w-full rounded-2xl bg-gradient-to-r from-accent-pink to-accent-peach p-6 text-white text-left disabled:opacity-50 shadow-lg"
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        {ideaLoading === 'feature' ? <FaSpinner className="animate-spin" /> : <FaMagic className="text-white" />}
+                        <span className="font-semibold text-lg">Feature Suggestion</span>
+                      </div>
+                      <p className="text-sm opacity-90">Get feature ideas for your projects</p>
+                    </motion.button>
+                    {ideaResult && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="rounded-2xl bg-brand-50 p-6 text-sm text-brand-700 whitespace-pre-wrap border-2 border-brand-200"
+                      >
+                        {ideaResult}
+                      </motion.div>
+                    )}
+                  </div>
+                )}
 
-            {activeTab === 'brain' && (
-              <div className="space-y-4">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => handleGenerateIdea('random')}
-                  disabled={ideaLoading === 'random'}
-                  className="w-full rounded-2xl bg-gradient-to-r from-accent-sky to-brand-400 p-6 text-white text-left disabled:opacity-50 shadow-lg"
-                >
-                  <div className="flex items-center gap-3 mb-2">
-                    {ideaLoading === 'random' ? <FaSpinner className="animate-spin" /> : <FaLightbulb className="text-yellow-300" />}
-                    <span className="font-semibold text-lg">Random Idea</span>
+                {activeTab === 'code' && (
+                  <div className="space-y-4">
+                    <textarea
+                      placeholder="Describe what you want to build..."
+                      className="w-full rounded-2xl border-2 border-brand-200 p-4 text-sm focus:outline-none focus:border-brand-500 resize-none h-40 font-mono transition"
+                    />
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full rounded-2xl bg-gradient-to-r from-brand-400 to-accent-mint p-4 text-white font-semibold text-sm shadow-lg"
+                    >
+                      <FaCode className="inline mr-2" />
+                      Generate Code
+                    </motion.button>
                   </div>
-                  <p className="text-sm opacity-90">Get a creative project idea</p>
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => handleGenerateIdea('feature')}
-                  disabled={ideaLoading === 'feature'}
-                  className="w-full rounded-2xl bg-gradient-to-r from-accent-pink to-accent-peach p-6 text-white text-left disabled:opacity-50 shadow-lg"
-                >
-                  <div className="flex items-center gap-3 mb-2">
-                    {ideaLoading === 'feature' ? <FaSpinner className="animate-spin" /> : <FaMagic className="text-white" />}
-                    <span className="font-semibold text-lg">Feature Suggestion</span>
+                )}
+
+                {activeTab === 'image' && (
+                  <div className="space-y-4">
+                    <input
+                      type="text"
+                      placeholder="Describe an image..."
+                      className="w-full rounded-2xl border-2 border-brand-200 px-6 py-4 text-sm focus:outline-none focus:border-brand-500 transition"
+                    />
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full rounded-2xl bg-gradient-to-r from-accent-peach to-brand-500 p-4 text-white font-semibold text-sm shadow-lg"
+                    >
+                      <FaImage className="inline mr-2" />
+                      Generate Image
+                    </motion.button>
+                    <div className="grid grid-cols-2 gap-4">
+                      {[1, 2, 3, 4].map((i) => (
+                        <div
+                          key={i}
+                          className="aspect-square rounded-2xl bg-gradient-to-br from-brand-100 to-accent-pink/20 animate-pulse"
+                        />
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-sm opacity-90">Get feature ideas for your projects</p>
-                </motion.button>
-                {ideaResult && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="rounded-2xl bg-brand-50 p-6 text-sm text-brand-700 whitespace-pre-wrap border-2 border-brand-200"
-                  >
-                    {ideaResult}
-                  </motion.div>
                 )}
               </div>
             )}
+          </div>  {/* end content area */}
 
-            {activeTab === 'code' && (
-              <div className="space-y-4">
-                <textarea
-                  placeholder="Describe what you want to build..."
-                  className="w-full rounded-2xl border-2 border-brand-200 p-4 text-sm focus:outline-none focus:border-brand-500 resize-none h-40 font-mono transition"
-                />
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full rounded-2xl bg-gradient-to-r from-brand-400 to-accent-mint p-4 text-white font-semibold text-sm shadow-lg"
-                >
-                  <FaCode className="inline mr-2" />
-                  Generate Code
-                </motion.button>
-              </div>
-            )}
-
-            {activeTab === 'image' && (
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Describe an image..."
-                  className="w-full rounded-2xl border-2 border-brand-200 px-6 py-4 text-sm focus:outline-none focus:border-brand-500 transition"
-                />
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full rounded-2xl bg-gradient-to-r from-accent-peach to-brand-500 p-4 text-white font-semibold text-sm shadow-lg"
-                >
-                  <FaImage className="inline mr-2" />
-                  Generate Image
-                </motion.button>
-                <div className="grid grid-cols-2 gap-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      className="aspect-square rounded-2xl bg-gradient-to-br from-brand-100 to-accent-pink/20 animate-pulse"
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
 
           {/* Resize Handle */}
           <div
