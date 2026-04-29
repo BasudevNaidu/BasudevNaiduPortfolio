@@ -50,6 +50,11 @@
   --shadow-glow: 0 0 40px rgba(168, 85, 247, 0.5);
 }
 
+html {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
 html,
 body {
   background: var(--bg-primary);
@@ -71,6 +76,7 @@ body {
 
 body {
   overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 ::selection {
@@ -352,24 +358,56 @@ body {
 }
 
 /* FIX FLOATING SKILL CIRCLES IN DARK MODE */
-[data-theme="dark"] .rounded-full,
-[data-theme="dark"] [class*="rounded-full"] {
+[data-theme="dark"] .rounded-full:not(.theme-toggle-btn),
+[data-theme="dark"] [class*="rounded-full"]:not(.theme-toggle-btn) {
   background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
   border: 2px solid #a78bfa !important;
   color: #ffffff !important;
   box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
 }
 
-[data-theme="dark"] .rounded-full:hover,
-[data-theme="dark"] [class*="rounded-full"]:hover {
+[data-theme="dark"] .rounded-full:not(.theme-toggle-btn):hover,
+[data-theme="dark"] [class*="rounded-full"]:not(.theme-toggle-btn):hover {
   background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
   border: 2px solid #c4b5fd !important;
   box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6) !important;
   transform: translateY(-2px) !important;
 }
 
-[data-theme="dark"] .rounded-full *,
-[data-theme="dark"] [class*="rounded-full"] * {
+/* ── Theme Toggle: completely locked position on all devices ── */
+.theme-toggle-btn {
+  position: fixed !important;
+  top: 24px !important;
+  right: 24px !important;
+  z-index: 9999 !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  cursor: pointer !important;
+  outline: none !important;
+  /* isolate from layout reflows */
+  contain: layout style !important;
+  transform-origin: center center !important;
+  transform: none !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+  will-change: transform !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18) !important;
+}
+.theme-toggle-btn:hover {
+  transform: scale(1.08) !important;
+}
+.theme-toggle-btn:active {
+  transform: scale(0.94) !important;
+}
+
+[data-theme="dark"] .rounded-full:not(.theme-toggle-btn) *,
+[data-theme="dark"] [class*="rounded-full"]:not(.theme-toggle-btn) * {
   color: #ffffff !important;
 }
 

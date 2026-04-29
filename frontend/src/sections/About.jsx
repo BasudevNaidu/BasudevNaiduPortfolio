@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaFileDownload } from 'react-icons/fa'
+import { FaFileDownload, FaRobot } from 'react-icons/fa'
 import { ABOUT_IMG, RESUME_URL } from '../data'
 
 export default function About() {
@@ -92,23 +92,46 @@ export default function About() {
             )}
           </motion.div>
 
-          <motion.a
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.55 }}
-            href={RESUME_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="group mt-8 inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-brand-500 to-accent-pink px-7 py-3 font-semibold text-white shadow-glow transition hover:scale-105"
-          >
-            <FaFileDownload className="transition group-hover:translate-y-1" />
-            View Resume
-            <span className="relative h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-            </span>
-          </motion.a>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            {/* View Resume */}
+            <motion.a
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.55 }}
+              href={RESUME_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-brand-500 to-accent-pink px-7 py-3 font-semibold text-white shadow-glow transition hover:scale-105"
+            >
+              <FaFileDownload className="transition group-hover:translate-y-1" />
+              View Resume
+              <span className="relative h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+              </span>
+            </motion.a>
+
+            {/* Try BanaAI */}
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.7 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 border-brand-500/40 bg-white/60 px-6 py-3 font-semibold text-brand-700 backdrop-blur transition hover:border-brand-500 hover:bg-white"
+            >
+              <motion.span
+                animate={{ rotate: [0, 12, -12, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative"
+              >
+                <FaRobot className="text-brand-500" />
+              </motion.span>
+              <span>Try BanaAI</span>
+            </motion.button>
+          </div>
         </div>
       </div>
     </section>

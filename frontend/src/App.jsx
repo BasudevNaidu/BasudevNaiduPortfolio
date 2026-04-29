@@ -37,11 +37,13 @@ export default function App() {
   return (
     <ThemeProvider>
       <Preloader onComplete={handlePreloaderComplete} />
-      <div className={`relative min-h-screen font-body text-brand-900 transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      {/* ThemeToggle MUST be outside the opacity wrapper — opacity creates a stacking context
+          that breaks position:fixed on mobile browsers */}
+      <ThemeToggle />
+      <div className={`relative min-h-screen font-body text-brand-900 transition-opacity duration-500 ${isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         <AnimatedBackground />
         <ProgressBar />
         <Sidebar />
-        <ThemeToggle />
 
         <main>
           <Hero />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaPaperPlane, FaProjectDiagram, FaRobot } from 'react-icons/fa'
 import { HERO_IMG, HERO_TAGLINES } from '../data'
@@ -19,9 +19,8 @@ export default function Hero() {
       id="home"
       className="relative flex min-h-screen items-center px-6 pt-24 sm:pl-28 sm:pr-10"
     >
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-2">
+      <div className="mx-auto grid w-full max-w-6xl gap-10 md:grid-cols-2 md:items-center">
         {/* Image */}
-        <div className="flex flex-col items-center gap-6">
         <motion.div
           initial={{ x: -80, opacity: 0, rotate: -8 }}
           animate={{ x: 0, opacity: 1, rotate: 0 }}
@@ -31,45 +30,37 @@ export default function Hero() {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-            className="absolute h-[360px] w-[360px] rounded-full"
+            className="absolute h-[260px] w-[260px] rounded-full sm:h-[320px] sm:w-[320px] md:h-[360px] md:w-[360px]"
             style={{
-              background:
-                'conic-gradient(from 0deg, #5b66ff, #ff6ad5, #ffb37c, #7ce0c2, #5b66ff)',
+              background: 'conic-gradient(from 0deg, #5b66ff, #ff6ad5, #ffb37c, #7ce0c2, #5b66ff)',
               filter: 'blur(2px)',
             }}
           />
           <motion.div
             animate={{ y: [0, -14, 0] }}
             transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
-            className="relative z-10 h-[320px] w-[320px] overflow-hidden rounded-full bg-white p-2 shadow-soft"
+            className="relative z-10 h-[240px] w-[240px] overflow-hidden rounded-full bg-white p-2 shadow-soft sm:h-[290px] sm:w-[290px] md:h-[320px] md:w-[320px]"
           >
             <div className="relative h-full w-full overflow-hidden rounded-full bg-gradient-to-br from-brand-100 to-accent-pink/20">
-              <img
-                src={HERO_IMG}
-                alt="Naidu Basudev"
-                className="h-full w-full object-cover"
-              />
+              <img src={HERO_IMG} alt="Naidu Basudev" className="h-full w-full object-cover" />
               <div className="shimmer pointer-events-none absolute inset-0" />
             </div>
           </motion.div>
 
           {/* Floating chips */}
           {[
-            { label: '⚛︎ React', top: '4%', left: '-12%', d: 0 },
-            { label: '{ } JS', top: '40%', left: '-18%', d: 0.3 },
-            { label: '☕ Java', top: '82%', left: '-8%', d: 0.6 },
-            { label: '🌿 Node', top: '6%', left: '90%', d: 0.9 },
-            { label: '◉ Express', top: '46%', left: '96%', d: 1.2 },
-            { label: '⚙ DevOps', top: '84%', left: '88%', d: 1.5 },
+            { label: '⚛︎ React',   top: '4%',  left: '-12%', d: 0   },
+            { label: '{ } JS',    top: '40%', left: '-18%', d: 0.3 },
+            { label: '☕ Java',    top: '82%', left: '-8%',  d: 0.6 },
+            { label: '🌿 Node',   top: '6%',  left: '90%',  d: 0.9 },
+            { label: '◉ Express', top: '46%', left: '96%',  d: 1.2 },
+            { label: '⚙ DevOps', top: '84%', left: '88%',  d: 1.5 },
           ].map((c, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
-              transition={{
-                delay: 0.6 + c.d,
-                y: { repeat: Infinity, duration: 3 + i, ease: 'easeInOut' },
-              }}
+              transition={{ delay: 0.6 + c.d, y: { repeat: Infinity, duration: 3 + i, ease: 'easeInOut' } }}
               style={{ top: c.top, left: c.left }}
               className="glass-strong absolute z-20 rounded-full px-3 py-1.5 text-xs font-semibold text-brand-700 shadow-soft"
             >
@@ -77,19 +68,6 @@ export default function Hero() {
             </motion.div>
           ))}
         </motion.div>
-
-          {/* Try BanaAI Button */}
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-brand-500 to-accent-pink px-6 py-3 font-semibold text-white shadow-glow transition hover:scale-[1.04]"
-          >
-            <span className="absolute inset-0 -translate-x-full bg-white/30 transition group-hover:translate-x-full" />
-            <FaRobot className="relative animate-pulse" />
-            <span className="relative">Try BanaAI</span>
-          </motion.button>
-        </div>
 
         {/* Text */}
         <div className="relative">
