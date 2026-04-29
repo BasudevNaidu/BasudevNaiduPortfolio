@@ -120,6 +120,7 @@ export default function About() {
               transition={{ delay: 0.7 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
+              onClick={() => navigate('/banaai')}
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 border-brand-500/40 bg-white/60 px-6 py-3 font-semibold text-brand-700 backdrop-blur transition hover:border-brand-500 hover:bg-white"
             >
               <motion.span
