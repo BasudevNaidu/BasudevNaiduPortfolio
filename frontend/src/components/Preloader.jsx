@@ -234,35 +234,6 @@ export const Preloader = ({ onComplete }) => {
           transition={{ duration: 0.05 }}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black overflow-hidden font-mono"
         >
-          {/* Clean uniform matrix rain */}
-          <div className="absolute inset-0">
-            {[...Array(40)].map((_, colIndex) => (
-              <div
-                key={colIndex}
-                className="absolute top-0 bottom-0 flex flex-col justify-between"
-                style={{ left: `${colIndex * 2.5}%`, width: '2.5%' }}
-              >
-                {[...Array(50)].map((_, rowIndex) => (
-                  <motion.div
-                    key={`${colIndex}-${rowIndex}`}
-                    className="text-sm font-mono text-green-500 flex items-center justify-center"
-                    initial={{ y: -20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      duration: 0.5,
-                      repeat: Infinity,
-                      delay: colIndex * 0.1 + rowIndex * 0.05,
-                      repeatDelay: 3 + Math.random() * 2
-                    }}
-                    style={{ textShadow: '0 0 8px #00ff00' }}
-                  >
-                    {Math.random() > 0.5 ? '1' : '0'}
-                  </motion.div>
-                ))}
-              </div>
-            ))}
-          </div>
-
           {/* Multiple terminal windows */}
           <div className="relative z-10 w-full max-w-7xl mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
             {/* Main terminal */}
@@ -571,6 +542,35 @@ export const Preloader = ({ onComplete }) => {
           {/* Scanlines */}
           <div className="absolute inset-0 pointer-events-none opacity-10">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/50 to-transparent h-1 animate-pulse" />
+          </div>
+
+          {/* Clean uniform matrix rain - rendered last with low z-index */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            {[...Array(40)].map((_, colIndex) => (
+              <div
+                key={colIndex}
+                className="absolute top-0 bottom-0 flex flex-col justify-between"
+                style={{ left: `${colIndex * 2.5}%`, width: '2.5%' }}
+              >
+                {[...Array(50)].map((_, rowIndex) => (
+                  <motion.div
+                    key={`${colIndex}-${rowIndex}`}
+                    className="text-sm font-mono flex items-center justify-center opacity-10"
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 0.1 }}
+                    transition={{
+                      duration: 0.5,
+                      repeat: Infinity,
+                      delay: colIndex * 0.1 + rowIndex * 0.05,
+                      repeatDelay: 3 + Math.random() * 2
+                    }}
+                    style={{ color: '#003300' }}
+                  >
+                    {Math.random() > 0.5 ? '1' : '0'}
+                  </motion.div>
+                ))}
+              </div>
+            ))}
           </div>
         </motion.div>
       )}
