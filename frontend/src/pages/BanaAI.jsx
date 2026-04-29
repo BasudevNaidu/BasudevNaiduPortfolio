@@ -93,12 +93,12 @@ export default function BanaAI() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-50 via-white to-accent-pink/20 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#fef3f2] via-white to-[#fce7f3]/20 overflow-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-brand-300/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent-pink/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-accent-sky/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-20 left-20 w-72 h-72 bg-[#c4b5fd]/30 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#f9a8d4]/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-[#7dd3fc]/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       {/* Header */}
@@ -112,7 +112,7 @@ export default function BanaAI() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate('/')}
-          className="flex items-center gap-2 text-brand-700 hover:text-brand-900 transition"
+          className="flex items-center gap-2 text-[#4338ca] hover:text-[#312e81] transition"
         >
           <FaArrowLeft />
           <span className="font-medium">Back to Portfolio</span>
@@ -126,21 +126,21 @@ export default function BanaAI() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, type: 'spring' }}
           style={{ width: modalSize.width, height: modalSize.height }}
-          className="relative rounded-3xl bg-white/95 backdrop-blur-xl shadow-2xl border border-brand-200/50 flex flex-col overflow-hidden"
+          className="relative rounded-3xl bg-white/95 backdrop-blur-xl shadow-2xl border border-[#e5e7eb]/50 flex flex-col overflow-hidden"
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-brand-100/60 p-6 flex-shrink-0 bg-gradient-to-r from-brand-50 to-accent-pink/20">
+          <div className="flex items-center justify-between border-b border-[#f3f4f6]/60 p-6 flex-shrink-0 bg-gradient-to-r from-[#fef3f2] to-[#fce7f3]/20">
             <div className="flex items-center gap-4">
               <motion.div
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-accent-pink text-white shadow-lg"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#6366f1] to-[#ec4899] text-white shadow-lg"
               >
                 <FaRobot className="text-xl" />
               </motion.div>
               <div>
-                <h1 className="font-display text-2xl font-bold text-brand-900">BanaAI</h1>
-                <p className="text-sm text-brand-700/60">Your Intelligent Assistant</p>
+                <h1 className="font-display text-2xl font-bold text-[#111827]">BanaAI</h1>
+                <p className="text-sm text-[#4338ca]/60">Your Intelligent Assistant</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -148,7 +148,7 @@ export default function BanaAI() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleExpand}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700 transition hover:bg-brand-200"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f3f4f6] text-[#4338ca] transition hover:bg-[#e5e7eb]"
                 title={isExpanded ? 'Compress' : 'Expand'}
               >
                 {isExpanded ? <FaTimes /> : <FaExpand />}
@@ -157,7 +157,7 @@ export default function BanaAI() {
           </div>
 
           {/* Tool Tabs */}
-          <div className="flex gap-3 p-6 overflow-x-auto flex-shrink-0 border-b border-brand-100/60">
+          <div className="flex gap-3 p-6 overflow-x-auto flex-shrink-0 border-b border-[#f3f4f6]/60">
             {tools.map((tool) => (
               <motion.button
                 key={tool.id}
@@ -167,7 +167,7 @@ export default function BanaAI() {
                 className={`flex flex-col items-center gap-2 rounded-2xl p-4 transition min-w-[80px] ${
                   activeTab === tool.id
                     ? `bg-gradient-to-br ${tool.color} text-white shadow-lg`
-                    : 'bg-brand-50 text-brand-700 hover:bg-brand-100'
+                    : 'bg-[#f3f4f6] text-[#4338ca] hover:bg-[#e5e7eb]'
                 }`}
               >
                 <tool.icon className="text-xl" />
@@ -189,8 +189,8 @@ export default function BanaAI() {
                       animate={{ opacity: 1, y: 0 }}
                       className={`rounded-2xl p-4 ${
                         msg.role === 'user'
-                          ? 'bg-gradient-to-r from-brand-500 to-accent-pink text-white ml-12'
-                          : 'bg-brand-50 text-brand-700 mr-12'
+                          ? 'bg-gradient-to-r from-[#6366f1] to-[#ec4899] text-white ml-12'
+                          : 'bg-[#f3f4f6] text-[#4338ca] mr-12'
                       }`}
                     >
                       <p className="text-sm whitespace-pre-wrap break-words">{msg.content}</p>
@@ -200,9 +200,9 @@ export default function BanaAI() {
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="rounded-2xl bg-brand-50 p-4 mr-12"
+                      className="rounded-2xl bg-[#f3f4f6] p-4 mr-12"
                     >
-                      <div className="flex items-center gap-2 text-brand-700">
+                      <div className="flex items-center gap-2 text-[#4338ca]">
                         <FaSpinner className="animate-spin" />
                         <span className="text-sm">Thinking...</span>
                       </div>
@@ -211,14 +211,14 @@ export default function BanaAI() {
                 </div>
 
                 {/* Input — always pinned at bottom */}
-                <div className="flex gap-3 px-6 py-4 border-t border-brand-100/60 flex-shrink-0 bg-white/80 backdrop-blur">
+                <div className="flex gap-3 px-6 py-4 border-t border-[#f3f4f6]/60 flex-shrink-0 bg-white/80 backdrop-blur">
                   <input
                     type="text"
                     value={chatInput}
                     onChange={(e) => setChatInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                     placeholder="Ask me anything..."
-                    className="flex-1 rounded-full border-2 border-brand-200 px-6 py-3 text-sm focus:outline-none focus:border-brand-500 transition"
+                    className="flex-1 rounded-full border-2 border-[#e5e7eb] px-6 py-3 text-sm focus:outline-none focus:border-[#6366f1] transition"
                     disabled={isChatLoading}
                   />
                   <motion.button
@@ -226,7 +226,7 @@ export default function BanaAI() {
                     whileTap={{ scale: 0.95 }}
                     onClick={handleSendMessage}
                     disabled={isChatLoading}
-                    className="rounded-full bg-gradient-to-r from-brand-500 to-accent-pink px-6 py-3 text-white text-sm font-semibold disabled:opacity-50 shadow-lg"
+                    className="rounded-full bg-gradient-to-r from-[#6366f1] to-[#ec4899] px-6 py-3 text-white text-sm font-semibold disabled:opacity-50 shadow-lg"
                   >
                     {isChatLoading ? <FaSpinner className="animate-spin" /> : 'Send'}
                   </motion.button>
@@ -241,7 +241,7 @@ export default function BanaAI() {
                   <div className="space-y-4">
                     <textarea
                       placeholder="Enter text to transform..."
-                      className="w-full rounded-2xl border-2 border-brand-200 p-4 text-sm focus:outline-none focus:border-brand-500 resize-none h-40 transition"
+                      className="w-full rounded-2xl border-2 border-[#e5e7eb] p-4 text-sm focus:outline-none focus:border-[#6366f1] resize-none h-40 transition"
                     />
                     <div className="flex gap-3 flex-wrap">
                       {['Summarize', 'Expand', 'Rewrite', 'Translate'].map((action) => (
@@ -249,7 +249,7 @@ export default function BanaAI() {
                           key={action}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="rounded-full bg-brand-100 px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-200 transition"
+                          className="rounded-full bg-[#f3f4f6] px-4 py-2 text-sm font-medium text-[#4338ca] hover:bg-[#e5e7eb] transition"
                         >
                           {action}
                         </motion.button>
@@ -265,7 +265,7 @@ export default function BanaAI() {
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handleGenerateIdea('random')}
                       disabled={ideaLoading === 'random'}
-                      className="w-full rounded-2xl bg-gradient-to-r from-accent-sky to-brand-400 p-6 text-white text-left disabled:opacity-50 shadow-lg"
+                      className="w-full rounded-2xl bg-gradient-to-r from-[#7dd3fc] to-[#6366f1] p-6 text-white text-left disabled:opacity-50 shadow-lg"
                     >
                       <div className="flex items-center gap-3 mb-2">
                         {ideaLoading === 'random' ? <FaSpinner className="animate-spin" /> : <FaLightbulb className="text-yellow-300" />}
@@ -278,7 +278,7 @@ export default function BanaAI() {
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handleGenerateIdea('feature')}
                       disabled={ideaLoading === 'feature'}
-                      className="w-full rounded-2xl bg-gradient-to-r from-accent-pink to-accent-peach p-6 text-white text-left disabled:opacity-50 shadow-lg"
+                      className="w-full rounded-2xl bg-gradient-to-r from-[#ec4899] to-[#fcd34d] p-6 text-white text-left disabled:opacity-50 shadow-lg"
                     >
                       <div className="flex items-center gap-3 mb-2">
                         {ideaLoading === 'feature' ? <FaSpinner className="animate-spin" /> : <FaMagic className="text-white" />}
@@ -290,7 +290,7 @@ export default function BanaAI() {
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="rounded-2xl bg-brand-50 p-6 text-sm text-brand-700 whitespace-pre-wrap border-2 border-brand-200"
+                        className="rounded-2xl bg-[#f3f4f6] p-6 text-sm text-[#4338ca] whitespace-pre-wrap border-2 border-[#e5e7eb]"
                       >
                         {ideaResult}
                       </motion.div>
@@ -302,12 +302,12 @@ export default function BanaAI() {
                   <div className="space-y-4">
                     <textarea
                       placeholder="Describe what you want to build..."
-                      className="w-full rounded-2xl border-2 border-brand-200 p-4 text-sm focus:outline-none focus:border-brand-500 resize-none h-40 font-mono transition"
+                      className="w-full rounded-2xl border-2 border-[#e5e7eb] p-4 text-sm focus:outline-none focus:border-[#6366f1] resize-none h-40 font-mono transition"
                     />
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full rounded-2xl bg-gradient-to-r from-brand-400 to-accent-mint p-4 text-white font-semibold text-sm shadow-lg"
+                      className="w-full rounded-2xl bg-gradient-to-r from-[#6366f1] to-[#6ee7b7] p-4 text-white font-semibold text-sm shadow-lg"
                     >
                       <FaCode className="inline mr-2" />
                       Generate Code
@@ -320,12 +320,12 @@ export default function BanaAI() {
                     <input
                       type="text"
                       placeholder="Describe an image..."
-                      className="w-full rounded-2xl border-2 border-brand-200 px-6 py-4 text-sm focus:outline-none focus:border-brand-500 transition"
+                      className="w-full rounded-2xl border-2 border-[#e5e7eb] px-6 py-4 text-sm focus:outline-none focus:border-[#6366f1] transition"
                     />
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full rounded-2xl bg-gradient-to-r from-accent-peach to-brand-500 p-4 text-white font-semibold text-sm shadow-lg"
+                      className="w-full rounded-2xl bg-gradient-to-r from-[#fcd34d] to-[#6366f1] p-4 text-white font-semibold text-sm shadow-lg"
                     >
                       <FaImage className="inline mr-2" />
                       Generate Image
@@ -334,7 +334,7 @@ export default function BanaAI() {
                       {[1, 2, 3, 4].map((i) => (
                         <div
                           key={i}
-                          className="aspect-square rounded-2xl bg-gradient-to-br from-brand-100 to-accent-pink/20 animate-pulse"
+                          className="aspect-square rounded-2xl bg-gradient-to-br from-[#f3f4f6] to-[#fce7f3]/20 animate-pulse"
                         />
                       ))}
                     </div>
@@ -348,9 +348,9 @@ export default function BanaAI() {
           {/* Resize Handle */}
           <div
             onMouseDown={handleResizeStart}
-            className="absolute bottom-0 right-0 w-6 h-6 cursor-se-resize flex items-center justify-center hover:bg-brand-100/50 rounded-tl-lg z-20"
+            className="absolute bottom-0 right-0 w-6 h-6 cursor-se-resize flex items-center justify-center hover:bg-[#f3f4f6]/50 rounded-tl-lg z-20"
           >
-            <div className="w-3 h-3 border-r-2 border-b-2 border-brand-400 rotate-45" />
+            <div className="w-3 h-3 border-r-2 border-b-2 border-[#6366f1] rotate-45" />
           </div>
         </motion.div>
       </div>
