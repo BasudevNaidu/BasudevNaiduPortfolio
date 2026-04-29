@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaRobot, FaTimes, FaMagic, FaBrain, FaLightbulb, FaCode, FaImage, FaSpinner } from 'react-icons/fa'
+import { FaRobot, FaTimes, FaMagic, FaBrain, FaLightbulb, FaCode, FaImage, FaSpinner, FaExpand, FaCompress } from 'react-icons/fa'
 import { sendChatMessage, generateIdea } from '../services/aiService'
 
 export default function AIButton() {
@@ -13,6 +13,10 @@ export default function AIButton() {
   const [isChatLoading, setIsChatLoading] = useState(false)
   const [ideaLoading, setIdeaLoading] = useState(null)
   const [ideaResult, setIdeaResult] = useState(null)
+  const [modalSize, setModalSize] = useState({ width: 400, height: 500 })
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [isResizing, setIsResizing] = useState(false)
+  const modalRef = useRef(null)
 
   const tools = [
     { id: 'chat', icon: FaRobot, label: 'AI Chat', color: 'from-brand-500 to-accent-pink' },
@@ -54,6 +58,40 @@ export default function AIButton() {
       setIdeaResult('Sorry, something went wrong. Please try again.')
     } finally {
       setIdeaLoading(null)
+    }
+  }
+
+  const handleResizeStart = (e) => {
+    e.preventDefault()
+    setIsResizing(true)
+    const startX = e.clientX
+    const startY = e.clientY
+    const startWidth = modalSize.width
+    const startHeight = modalSize.height
+
+    const handleMouseMove = (moveEvent) => {
+      const newWidth = Math.max(350, startWidth + (moveEvent.clientX - startX))
+      const newHeight = Math.max(400, startHeight + (moveEvent.clientY - startY))
+      setModalSize({ width: newWidth, height: newHeight })
+    }
+
+    const handleMouseUp = () => {
+      setIsResizing(false)
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseup', handleMouseUp)
+    }
+
+    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseup', handleMouseUp)
+  }
+
+  const toggleExpand = () => {
+    if (isExpanded) {
+      setModalSize({ width: 400, height: 500 })
+      setIsExpanded(false)
+    } else {
+      setModalSize({ width: window.innerWidth * 0.8, height: window.innerHeight * 0.8 })
+      setIsExpanded(true)
     }
   }
 
@@ -101,14 +139,16 @@ export default function AIButton() {
 
             {/* Modal */}
             <motion.div
+              ref={modalRef}
               initial={{ opacity: 0, scale: 0.8, y: 50 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: 50 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed bottom-24 right-8 z-[1000] w-[90vw] max-w-md rounded-2xl bg-white/95 backdrop-blur-xl shadow-2xl border border-brand-200/50"
+              style={{ width: modalSize.width, height: modalSize.height }}
+              className="fixed bottom-24 right-8 z-[1000] rounded-2xl bg-white/95 backdrop-blur-xl shadow-2xl border border-brand-200/50 flex flex-col overflow-hidden"
             >
               {/* Header */}
-              <div className="flex items-center justify-between border-b border-brand-100/60 p-4">
+              <div className="flex items-center justify-between border-b border-brand-100/60 p-4 flex-shrink-0">
                 <div className="flex items-center gap-3">
                   <motion.div
                     animate={{ rotate: [0, 360] }}
@@ -122,18 +162,29 @@ export default function AIButton() {
                     <p className="text-xs text-brand-700/60">Powered by magic ✨</p>
                   </div>
                 </div>
-                <motion.button
-                  whileHover={{ rotate: 90, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setIsOpen(false)}
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-100 text-brand-700 transition hover:bg-brand-200"
-                >
-                  <FaTimes />
-                </motion.button>
+                <div className="flex items-center gap-2">
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={toggleExpand}
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-100 text-brand-700 transition hover:bg-brand-200"
+                    title={isExpanded ? 'Compress' : 'Expand'}
+                  >
+                    {isExpanded ? <FaCompress /> : <FaExpand />}
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ rotate: 90, scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setIsOpen(false)}
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-100 text-brand-700 transition hover:bg-brand-200"
+                  >
+                    <FaTimes />
+                  </motion.button>
+                </div>
               </div>
 
               {/* Tool Tabs */}
-              <div className="flex gap-2 p-4 overflow-x-auto">
+              <div className="flex gap-2 p-4 overflow-x-auto flex-shrink-0">
                 {tools.map((tool) => (
                   <motion.button
                     key={tool.id}
@@ -153,10 +204,10 @@ export default function AIButton() {
               </div>
 
               {/* Content Area */}
-              <div className="p-4">
+              <div className="flex-1 overflow-y-auto p-4">
                 {activeTab === 'chat' && (
-                  <div className="space-y-3">
-                    <div className="max-h-48 overflow-y-auto space-y-2">
+                  <div className="flex flex-col h-full space-y-3">
+                    <div className="flex-1 overflow-y-auto space-y-2 min-h-[200px]">
                       {chatMessages.map((msg, i) => (
                         <div
                           key={i}
@@ -166,7 +217,7 @@ export default function AIButton() {
                               : 'bg-brand-50 text-brand-700 mr-8'
                           }`}
                         >
-                          <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                          <p className="text-sm whitespace-pre-wrap break-words">{msg.content}</p>
                         </div>
                       ))}
                       {isChatLoading && (
@@ -178,7 +229,7 @@ export default function AIButton() {
                         </div>
                       )}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 pt-2 border-t border-brand-100/60 flex-shrink-0">
                       <input
                         type="text"
                         value={chatInput}
@@ -304,6 +355,14 @@ export default function AIButton() {
                     </div>
                   </div>
                 )}
+              </div>
+
+              {/* Resize Handle */}
+              <div
+                onMouseDown={handleResizeStart}
+                className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize flex items-center justify-center hover:bg-brand-100/50 rounded-tl-lg"
+              >
+                <div className="w-2 h-2 border-r-2 border-b-2 border-brand-400 rotate-45" />
               </div>
             </motion.div>
           </>
