@@ -6,7 +6,6 @@ import Footer from './components/Footer'
 import { ThemeToggle } from './components/ThemeToggle'
 import { Preloader } from './components/Preloader'
 import ScrollToTop from './components/ScrollToTop'
-import AIButton from './components/AIButton'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Hero from './sections/Hero'
 import About from './sections/About'
@@ -57,7 +56,6 @@ export default function App() {
 
         <Footer />
         <ScrollToTop />
-        <AIButton />
       </div>
     </ThemeProvider>
   )
