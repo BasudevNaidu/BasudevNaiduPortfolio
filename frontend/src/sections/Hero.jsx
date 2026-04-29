@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaPaperPlane, FaProjectDiagram } from 'react-icons/fa'
+import { FaPaperPlane, FaProjectDiagram, FaRobot } from 'react-icons/fa'
 import { HERO_IMG, HERO_TAGLINES } from '../data'
 
 export default function Hero() {
@@ -21,6 +21,7 @@ export default function Hero() {
     >
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-2">
         {/* Image */}
+        <div className="flex flex-col items-center gap-6">
         <motion.div
           initial={{ x: -80, opacity: 0, rotate: -8 }}
           animate={{ x: 0, opacity: 1, rotate: 0 }}
@@ -76,6 +77,19 @@ export default function Hero() {
             </motion.div>
           ))}
         </motion.div>
+
+          {/* Try BanaAI Button */}
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-brand-500 to-accent-pink px-6 py-3 font-semibold text-white shadow-glow transition hover:scale-[1.04]"
+          >
+            <span className="absolute inset-0 -translate-x-full bg-white/30 transition group-hover:translate-x-full" />
+            <FaRobot className="relative animate-pulse" />
+            <span className="relative">Try BanaAI</span>
+          </motion.button>
+        </div>
 
         {/* Text */}
         <div className="relative">
