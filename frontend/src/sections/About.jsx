@@ -1,9 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaFileDownload, FaRobot } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 import { ABOUT_IMG, RESUME_URL } from '../data'
 
 export default function About() {
+  const navigate = useNavigate()
   return (
     <section
       id="about"
