@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AnimatedBackground from './components/AnimatedBackground'
 import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
@@ -15,6 +16,7 @@ import Projects from './sections/Projects'
 import Coding from './sections/Coding'
 import Certifications from './sections/Certifications'
 import Contact from './sections/Contact'
+import BanaAI from './pages/BanaAI'
 
 function ProgressBar() {
   const { scrollYProgress } = useScroll()
@@ -35,30 +37,37 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider>
-      <Preloader onComplete={handlePreloaderComplete} />
-      {/* ThemeToggle MUST be outside the opacity wrapper — opacity creates a stacking context
-          that breaks position:fixed on mobile browsers */}
-      <ThemeToggle />
-      <div className={`relative min-h-screen font-body text-brand-900 transition-opacity duration-500 ${isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-        <AnimatedBackground />
-        <ProgressBar />
-        <Sidebar />
+    <BrowserRouter>
+      <ThemeProvider>
+        <Preloader onComplete={handlePreloaderComplete} />
+        {/* ThemeToggle MUST be outside the opacity wrapper — opacity creates a stacking context
+            that breaks position:fixed on mobile browsers */}
+        <ThemeToggle />
+        <Routes>
+          <Route path="/" element={
+            <div className={`relative min-h-screen font-body text-brand-900 transition-opacity duration-500 ${isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+              <AnimatedBackground />
+              <ProgressBar />
+              <Sidebar />
 
-        <main>
-          <Hero />
-          <About />
-          <Education />
-          <Skills />
-          <Projects />
-          <Coding />
-          <Certifications />
-          <Contact />
-        </main>
+              <main>
+                <Hero />
+                <About />
+                <Education />
+                <Skills />
+                <Projects />
+                <Coding />
+                <Certifications />
+                <Contact />
+              </main>
 
-        <Footer />
-        <ScrollToTop />
-      </div>
-    </ThemeProvider>
+              <Footer />
+              <ScrollToTop />
+            </div>
+          } />
+          <Route path="/banaai" element={<BanaAI />} />
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   )
 }
