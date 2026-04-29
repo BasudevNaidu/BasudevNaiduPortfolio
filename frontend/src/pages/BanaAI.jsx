@@ -106,7 +106,7 @@ export default function BanaAI() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, type: 'spring' }}
-        className="relative z-10 flex items-center justify-between px-8 py-6"
+        className="relative z-10 flex items-center px-8 py-6 pr-24"
       >
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -117,14 +117,6 @@ export default function BanaAI() {
           <FaArrowLeft />
           <span className="font-medium">Back to Portfolio</span>
         </motion.button>
-
-        <motion.div
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-accent-pink text-white shadow-lg"
-        >
-          <FaRobot className="text-xl" />
-        </motion.div>
       </motion.header>
 
       {/* Main Content */}
