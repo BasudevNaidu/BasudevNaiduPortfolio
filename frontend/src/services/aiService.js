@@ -29,7 +29,7 @@ export async function sendChatMessage(messages) {
       console.error("API Error:", errorData);
       throw new Error(errorData.error?.message || "API request failed");
     }
-
+  
     const data = await response.json();
     return data.choices[0]?.message?.content || "";
   } catch (error) {
@@ -46,7 +46,9 @@ export async function generateIdea(type) {
     feature:
       "Suggest 3 creative features for a web application. Make them innovative, user-friendly, and technically interesting. Keep each suggestion brief.",
   };
-
+ 
+   
+  
   try {
     console.log("Generating idea with Groq API...");
 
@@ -72,6 +74,7 @@ export async function generateIdea(type) {
         temperature: 0.8,
         max_tokens: 512,
       }),
+
     });
 
     if (!response.ok) {

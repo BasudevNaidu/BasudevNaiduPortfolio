@@ -231,6 +231,10 @@ export const CERTIFICATES = [
     name: 'Dynamic Programming, Greedy Algorithms (Univ. of Colorado Boulder)',
     img: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/certificates/DP%20&%20Greedy%20Algo.png?updatedAt=1776780885021',
   },
+  {
+    name: 'AWS Cloud Foundational',
+    img: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/certificates/Screenshot%202026-06-04%20231531.png',
+  },
 ]
 
 export const CONTACTS = [
