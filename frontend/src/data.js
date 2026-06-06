@@ -235,6 +235,14 @@ export const CERTIFICATES = [
     name: 'AWS Cloud Foundational',
     img: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/certificates/Screenshot%202026-06-04%20231531.png',
   },
+  {
+    name: 'AWS Certified Developer - Associate',
+    img: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/certificates/Screenshot%202026-06-04%20231551.png?updatedAt=1780595769325',
+  },
+  {
+    name: 'AWS Certified Solution Architect - Associate',
+    img: 'https://ik.imagekit.io/b2asu00dev6/PortfolioImg/certificates/Screenshot%202026-06-06%20113443.png',
+  },
 ]
 
 export const CONTACTS = [
